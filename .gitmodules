@@ -1,0 +1,3 @@
+[submodule "raw-data"]
+	path = raw-data
+	url = https://github.com/shikhar1verma/distill-tech-books-raw.git

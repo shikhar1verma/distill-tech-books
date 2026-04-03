@@ -1,0 +1,35 @@
+# Source PDFs (local drop zone only — copies go to private raw-data/ submodule)
+books/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Obsidian (vault config is per-user)
+.obsidian/
+library/**/.obsidian/
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code local settings (personal permissions)
+.claude/settings.local.json
+
+# Build artifacts from notebook generation
+*/_build_notebook.py
+*/build_notebook.py
+
+# Plan file (personal)
+PLAN.md

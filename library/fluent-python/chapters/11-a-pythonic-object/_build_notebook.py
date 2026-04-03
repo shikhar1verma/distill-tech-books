@@ -1,0 +1,606 @@
+"""Build the Chapter 11 notebook."""
+import sys
+sys.path.insert(0, "src")
+from notebook_builder import build_notebook
+
+cells = [
+    # Title
+    {
+        "type": "markdown",
+        "content": (
+            "# Chapter 11: A Pythonic Object\n"
+            "**Fluent Python, 2nd Edition** -- Luciano Ramalho\n\n"
+            "> \"To build Pythonic objects, observe how real Python objects behave.\"\n\n"
+            "## TL;DR\n"
+            "Python's data model lets your classes behave like built-in types by implementing "
+            "special ('dunder') methods. This chapter builds a **Vector2d** class step-by-step, demonstrating:\n"
+            "- **Object representations**: `__repr__`, `__str__`, `__format__`, `__bytes__`\n"
+            "- **Alternative constructors** via `@classmethod`\n"
+            "- **Hashability** through `__hash__` + `__eq__` + immutability\n"
+            "- **Read-only properties** and private attributes (name mangling)\n"
+            "- **Memory optimization** with `__slots__`\n"
+            "- **Overriding class attributes** idiomatically\n\n"
+            "**Related wiki articles:** [[object-representations]], [[classmethod-vs-staticmethod]], "
+            "[[hashable-objects]], [[private-and-protected-attributes]], [[slots]], "
+            "[[overriding-class-attributes]], [[read-only-properties]]"
+        ),
+    },
+    # ── Concept 1: Object Representations ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 1. Object Representations: `__repr__`, `__str__`, `__format__`, `__bytes__`\n\n"
+            "Python has **multiple string protocols** for objects:\n\n"
+            "| Method | Called by | Audience |\n"
+            "|---|---|---|\n"
+            "| `__repr__` | `repr()`, debugger, console | Developer |\n"
+            "| `__str__` | `str()`, `print()` | End user |\n"
+            "| `__format__` | `format()`, f-strings | Configurable display |\n"
+            "| `__bytes__` | `bytes()` | Binary serialization |\n\n"
+            "> **Rule of thumb:** If you implement only one, choose `__repr__`, "
+            "because Python falls back to it when `__str__` is missing.\n\n"
+            "See also: [[object-representations]]"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "from array import array\n"
+            "import math\n\n"
+            "class Vector2d:\n"
+            '    """A two-dimensional Euclidean vector."""\n'
+            "    typecode = 'd'\n\n"
+            "    def __init__(self, x, y):\n"
+            "        self.x = float(x)\n"
+            "        self.y = float(y)\n\n"
+            "    def __iter__(self):\n"
+            "        return (i for i in (self.x, self.y))\n\n"
+            "    def __repr__(self):\n"
+            "        class_name = type(self).__name__\n"
+            "        return '{}({!r}, {!r})'.format(class_name, *self)\n\n"
+            "    def __str__(self):\n"
+            "        return str(tuple(self))\n\n"
+            "    def __bytes__(self):\n"
+            "        return (bytes([ord(self.typecode)]) +\n"
+            "                bytes(array(self.typecode, self)))\n\n"
+            "    def __eq__(self, other):\n"
+            "        return tuple(self) == tuple(other)\n\n"
+            "    def __abs__(self):\n"
+            "        return math.hypot(self.x, self.y)\n\n"
+            "    def __bool__(self):\n"
+            "        return bool(abs(self))\n\n"
+            "# Demonstrate the different representations\n"
+            "v = Vector2d(3, 4)\n"
+            'print(f"repr : {repr(v)}")\n'
+            'print(f"str  : {str(v)}")\n'
+            'print(f"bytes: {bytes(v)}")\n'
+            'print(f"abs  : {abs(v)}")\n'
+            'print(f"bool : {bool(v)}, bool(Vector2d(0,0))={bool(Vector2d(0,0))}")'
+        ),
+    },
+    {
+        "type": "markdown",
+        "content": (
+            "### Key insight: `__iter__` enables unpacking\n"
+            "Because `Vector2d` is iterable, you can unpack it into variables "
+            "and use `*self` inside `__repr__`."
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "v = Vector2d(3, 4)\n"
+            "x, y = v  # unpacking works because of __iter__\n"
+            'print(f"Unpacked: x={x}, y={y}")\n\n'
+            "# repr produces valid constructor call\n"
+            "v_clone = eval(repr(v))\n"
+            'print(f"Clone via eval(repr()): {v_clone}")\n'
+            'print(f"Equal? {v == v_clone}")'
+        ),
+    },
+    # ── Concept 2: Formatted Displays ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 2. Custom Formatted Displays with `__format__`\n\n"
+            "The **Format Specification Mini-Language** is extensible. Each class can define "
+            "its own format codes. Our Vector2d supports:\n"
+            "- Standard float codes (`.2f`, `.3e`) applied to each component\n"
+            "- A custom `'p'` suffix for **polar coordinates**: `<magnitude, angle>`"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "class Vector2dFmt:\n"
+            "    typecode = 'd'\n\n"
+            "    def __init__(self, x, y):\n"
+            "        self.x = float(x)\n"
+            "        self.y = float(y)\n\n"
+            "    def __iter__(self):\n"
+            "        return (i for i in (self.x, self.y))\n\n"
+            "    def __repr__(self):\n"
+            "        class_name = type(self).__name__\n"
+            "        return '{}({!r}, {!r})'.format(class_name, *self)\n\n"
+            "    def __abs__(self):\n"
+            "        return math.hypot(self.x, self.y)\n\n"
+            "    def angle(self):\n"
+            "        return math.atan2(self.y, self.x)\n\n"
+            "    def __format__(self, fmt_spec=''):\n"
+            "        if fmt_spec.endswith('p'):\n"
+            "            fmt_spec = fmt_spec[:-1]\n"
+            "            coords = (abs(self), self.angle())\n"
+            "            outer_fmt = '<{}, {}>'\n"
+            "        else:\n"
+            "            coords = self\n"
+            "            outer_fmt = '({}, {})'\n"
+            "        components = (format(c, fmt_spec) for c in coords)\n"
+            "        return outer_fmt.format(*components)\n\n"
+            "v = Vector2dFmt(1, 1)\n"
+            'print(f"Default:    {format(v)}")\n'
+            'print(f"Fixed 2:    {format(v, \'.2f\')}")\n'
+            'print(f"Sci 3:      {format(v, \'.3e\')}")\n'
+            'print(f"Polar:      {format(v, \'p\')}")\n'
+            'print(f"Polar .3e:  {format(v, \'.3ep\')}")\n'
+            'print(f"Polar .5f:  {format(v, \'0.5fp\')}")\n'
+            'print(f"f-string:   {v:.2f}")'
+        ),
+    },
+    # ── Concept 3: classmethod vs staticmethod ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 3. `@classmethod` vs `@staticmethod`\n\n"
+            "| Feature | `@classmethod` | `@staticmethod` |\n"
+            "|---|---|---|\n"
+            "| First argument | `cls` (the class) | None (plain function) |\n"
+            "| Use case | Alternative constructors | Rarely needed |\n"
+            "| Inheritance | Respects subclass (`cls` is the actual subclass) | No class awareness |\n\n"
+            "> **Ramalho's advice:** \"Good use cases for `staticmethod` are very rare. "
+            "A module-level function is simpler.\"\n\n"
+            "See also: [[classmethod-vs-staticmethod]]"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "class Demo:\n"
+            "    @classmethod\n"
+            "    def klassmeth(*args):\n"
+            "        return args\n\n"
+            "    @staticmethod\n"
+            "    def statmeth(*args):\n"
+            "        return args\n\n"
+            "# classmethod always receives the class as first arg\n"
+            'print(f"classmethod(): {Demo.klassmeth()}")\n'
+            'print(f"classmethod(\'spam\'): {Demo.klassmeth(\'spam\')}")\n\n'
+            "# staticmethod is just a plain function\n"
+            'print(f"staticmethod(): {Demo.statmeth()}")\n'
+            'print(f"staticmethod(\'spam\'): {Demo.statmeth(\'spam\')}")'
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "# Practical example: alternative constructor via @classmethod\n"
+            "from array import array\n\n"
+            "class Vector2dAlt:\n"
+            "    typecode = 'd'\n\n"
+            "    def __init__(self, x, y):\n"
+            "        self.x = float(x)\n"
+            "        self.y = float(y)\n\n"
+            "    def __iter__(self):\n"
+            "        return (i for i in (self.x, self.y))\n\n"
+            "    def __repr__(self):\n"
+            "        return f'Vector2dAlt({self.x!r}, {self.y!r})'\n\n"
+            "    def __bytes__(self):\n"
+            "        return (bytes([ord(self.typecode)]) +\n"
+            "                bytes(array(self.typecode, self)))\n\n"
+            "    @classmethod\n"
+            "    def frombytes(cls, octets):\n"
+            '        """Alternative constructor: build from binary representation."""\n'
+            "        typecode = chr(octets[0])\n"
+            "        memv = memoryview(octets[1:]).cast(typecode)\n"
+            "        return cls(*memv)  # cls, not Vector2dAlt -- respects subclasses!\n\n"
+            "v1 = Vector2dAlt(3, 4)\n"
+            "raw = bytes(v1)\n"
+            'print(f"bytes: {raw}")\n\n'
+            "v2 = Vector2dAlt.frombytes(raw)\n"
+            'print(f"Restored: {v2}")'
+        ),
+    },
+    # ── Concept 4: Hashable Objects ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 4. Making Objects Hashable: `__hash__` and `__eq__`\n\n"
+            "To use objects as **dict keys** or **set members**, they must be hashable. Requirements:\n"
+            "1. Implement `__hash__` returning an `int`\n"
+            "2. Implement `__eq__` (already have it)\n"
+            "3. Objects that compare equal **must** have the same hash\n"
+            "4. The hash value should **never change** -- so make the object immutable\n\n"
+            "See also: [[hashable-objects]], [[read-only-properties]]"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "import math\n"
+            "from array import array\n\n"
+            "class Vector2dHash:\n"
+            "    typecode = 'd'\n"
+            "    __match_args__ = ('x', 'y')\n\n"
+            "    def __init__(self, x, y):\n"
+            "        self.__x = float(x)   # private attributes for immutability\n"
+            "        self.__y = float(y)\n\n"
+            "    @property\n"
+            "    def x(self):               # read-only property\n"
+            "        return self.__x\n\n"
+            "    @property\n"
+            "    def y(self):               # read-only property\n"
+            "        return self.__y\n\n"
+            "    def __iter__(self):\n"
+            "        return (i for i in (self.x, self.y))\n\n"
+            "    def __repr__(self):\n"
+            "        class_name = type(self).__name__\n"
+            "        return '{}({!r}, {!r})'.format(class_name, *self)\n\n"
+            "    def __str__(self):\n"
+            "        return str(tuple(self))\n\n"
+            "    def __eq__(self, other):\n"
+            "        return tuple(self) == tuple(other)\n\n"
+            "    def __hash__(self):\n"
+            "        return hash((self.x, self.y))\n\n"
+            "    def __abs__(self):\n"
+            "        return math.hypot(self.x, self.y)\n\n"
+            "    def __bool__(self):\n"
+            "        return bool(abs(self))\n\n"
+            "# Now it is hashable!\n"
+            "v1 = Vector2dHash(3, 4)\n"
+            "v2 = Vector2dHash(3.1, 4.2)\n"
+            'print(f"hash(v1)={hash(v1)}, hash(v2)={hash(v2)}")\n'
+            'print(f"Set: { {v1, v2} }")\n\n'
+            "# Immutability enforced\n"
+            "try:\n"
+            "    v1.x = 99\n"
+            "except AttributeError as e:\n"
+            '    print(f"Cannot set x: {e}")'
+        ),
+    },
+    # ── Concept 5: Private and Protected Attributes ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 5. Private and Protected Attributes (Name Mangling)\n\n"
+            "Python has **no true private** attributes. Instead:\n\n"
+            "| Convention | Syntax | Mechanism |\n"
+            "|---|---|---|\n"
+            "| **Private** | `__attr` (2 underscores) | Name mangling: stored as `_ClassName__attr` |\n"
+            "| **Protected** | `_attr` (1 underscore) | Convention only -- not enforced |\n"
+            "| **Public** | `attr` | No protection |\n\n"
+            "Name mangling prevents **accidental** override in subclasses, not malicious access.\n\n"
+            "See also: [[private-and-protected-attributes]]"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "v = Vector2dHash(3, 4)\n\n"
+            "# Name mangling in action\n"
+            'print(f"Instance __dict__: {v.__dict__}")\n\n'
+            "# You CAN access mangled names (safety, not security)\n"
+            'print(f"Direct access: v._Vector2dHash__x = {v._Vector2dHash__x}")\n\n'
+            "# The property provides the clean public API\n"
+            'print(f"Property access: v.x = {v.x}")'
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "# Name mangling prevents subclass collisions\n"
+            "class Parent:\n"
+            "    def __init__(self):\n"
+            "        self.__secret = \"parent's secret\"\n\n"
+            "    def reveal(self):\n"
+            "        return self.__secret\n\n"
+            "class Child(Parent):\n"
+            "    def __init__(self):\n"
+            "        super().__init__()\n"
+            "        self.__secret = \"child's secret\"  # does NOT clobber parent's!\n\n"
+            "    def reveal_child(self):\n"
+            "        return self.__secret\n\n"
+            "c = Child()\n"
+            'print(f"Parent\'s method sees: {c.reveal()}")      # parent\'s secret\n'
+            'print(f"Child\'s method sees:  {c.reveal_child()}")  # child\'s secret\n'
+            'print(f"Internal storage:      {c.__dict__}")'
+        ),
+    },
+    # ── Concept 6: __slots__ ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 6. Saving Memory with `__slots__`\n\n"
+            "By default, Python stores instance attributes in a per-instance `__dict__`. "
+            "With `__slots__`:\n"
+            "- Attributes are stored in a **hidden array** (no `__dict__`)\n"
+            "- **Memory savings**: ~3x for millions of instances\n"
+            "- **Tradeoff**: Cannot add arbitrary attributes, must redeclare in subclasses\n\n"
+            "See also: [[slots]]"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "import sys\n\n"
+            "class RegularPoint:\n"
+            "    def __init__(self, x, y):\n"
+            "        self.x = x\n"
+            "        self.y = y\n\n"
+            "class SlottedPoint:\n"
+            "    __slots__ = ('x', 'y')\n\n"
+            "    def __init__(self, x, y):\n"
+            "        self.x = x\n"
+            "        self.y = y\n\n"
+            "# Compare memory usage\n"
+            "regular = RegularPoint(1.0, 2.0)\n"
+            "slotted = SlottedPoint(1.0, 2.0)\n\n"
+            'print(f"Regular has __dict__: {hasattr(regular, \'__dict__\')}")\n'
+            'print(f"Slotted has __dict__: {hasattr(slotted, \'__dict__\')}")\n\n'
+            "# Cannot add arbitrary attributes to slotted\n"
+            "try:\n"
+            "    slotted.z = 3.0\n"
+            "except AttributeError as e:\n"
+            '    print(f"Cannot add \'z\': {e}")\n\n'
+            "# Memory comparison (rough estimate via sys.getsizeof)\n"
+            'print(f"\\nRegular instance size: {sys.getsizeof(regular)} bytes")\n'
+            'print(f"Regular __dict__ size: {sys.getsizeof(regular.__dict__)} bytes")\n'
+            'print(f"Slotted instance size: {sys.getsizeof(slotted)} bytes")'
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "# __slots__ inheritance gotcha\n"
+            "class Pixel:\n"
+            "    __slots__ = ('x', 'y')\n\n"
+            "class OpenPixel(Pixel):\n"
+            "    pass  # No __slots__ declared!\n\n"
+            "class ColorPixel(Pixel):\n"
+            "    __slots__ = ('color',)  # Adds to parent's slots\n\n"
+            "op = OpenPixel()\n"
+            'print(f"OpenPixel has __dict__: {hasattr(op, \'__dict__\')}")  # True! Surprise!\n'
+            "op.color = 'red'  # This works -- stored in __dict__\n"
+            'print(f"OpenPixel can add attrs: color={op.color}")\n\n'
+            "cp = ColorPixel()\n"
+            'print(f"\\nColorPixel has __dict__: {hasattr(cp, \'__dict__\')}")  # False\n'
+            "cp.x = 1\n"
+            "cp.y = 2\n"
+            "cp.color = 'blue'\n"
+            'print(f"ColorPixel: ({cp.x}, {cp.y}, {cp.color})")\n'
+            "try:\n"
+            "    cp.flavor = 'banana'\n"
+            "except AttributeError as e:\n"
+            '    print(f"Cannot add \'flavor\': {e}")'
+        ),
+    },
+    # ── Concept 7: Overriding Class Attributes ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## 7. Overriding Class Attributes\n\n"
+            "Class attributes work as **defaults** for instance attribute lookups. "
+            "When you write to `self.attr`, you create an **instance attribute** that "
+            "**shadows** the class attribute.\n\n"
+            "**Idiomatic pattern:** Subclass to customize class-wide defaults rather "
+            "than mutating the base class.\n\n"
+            "See also: [[overriding-class-attributes]]"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "class Vector2dDemo:\n"
+            "    typecode = 'd'  # class attribute: 8-byte double\n\n"
+            "    def __init__(self, x, y):\n"
+            "        self.x = float(x)\n"
+            "        self.y = float(y)\n\n"
+            "    def export_info(self):\n"
+            "        byte_size = {'d': 8, 'f': 4}[self.typecode]\n"
+            "        return f'typecode={self.typecode!r}, bytes per component: {byte_size}'\n\n"
+            "# Default behavior\n"
+            "v1 = Vector2dDemo(1.1, 2.2)\n"
+            'print(f"Default: {v1.export_info()}")\n\n'
+            "# Override per-instance (creates instance attribute)\n"
+            "v1.typecode = 'f'\n"
+            'print(f"After instance override: {v1.export_info()}")\n'
+            'print(f"Class attribute unchanged: {Vector2dDemo.typecode!r}")\n\n'
+            "# Idiomatic: subclass to customize\n"
+            "class ShortVector2d(Vector2dDemo):\n"
+            "    typecode = 'f'  # 4-byte float\n\n"
+            "sv = ShortVector2d(1.1, 2.2)\n"
+            'print(f"\\nSubclass: {sv.export_info()}")\n'
+            'print(f"Base class still: {Vector2dDemo.typecode!r}")'
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "# Why use type(self).__name__ in __repr__?\n"
+            "class Base:\n"
+            "    def __repr__(self):\n"
+            "        # GOOD: uses runtime class name\n"
+            "        return f'{type(self).__name__}(...)'\n\n"
+            "class Sub(Base):\n"
+            "    pass\n\n"
+            "print(repr(Base()))  # Base(...)\n"
+            "print(repr(Sub()))   # Sub(...) -- correct! No override needed"
+        ),
+    },
+    # ── Exercises ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## Exercises\n\n"
+            "Test your understanding of Chapter 11 concepts."
+        ),
+    },
+    {
+        "type": "markdown",
+        "content": (
+            "### Exercise 1: Implement `__format__` for a Money class\n\n"
+            "Create a `Money` class that:\n"
+            "- Stores `amount` (float) and `currency` (str, e.g. \"USD\")\n"
+            "- `__repr__` returns `Money(10.5, 'USD')`\n"
+            "- `__format__` with no spec returns `'10.50 USD'`\n"
+            "- `__format__` with a float spec (e.g. '.3f') applies it to the amount"
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "# Exercise 1: Your solution here\n"
+            "class Money:\n"
+            "    def __init__(self, amount, currency):\n"
+            "        self.amount = float(amount)\n"
+            "        self.currency = currency\n\n"
+            "    def __repr__(self):\n"
+            "        return f'Money({self.amount!r}, {self.currency!r})'\n\n"
+            "    def __format__(self, fmt_spec=''):\n"
+            "        if not fmt_spec:\n"
+            "            fmt_spec = '.2f'\n"
+            "        return f'{format(self.amount, fmt_spec)} {self.currency}'\n\n"
+            "# Test it\n"
+            "m = Money(10.5, 'USD')\n"
+            'print(f"repr: {repr(m)}")\n'
+            'print(f"format default: {format(m)}")\n'
+            'print(f"format .3f: {format(m, \'.3f\')}")\n'
+            'print(f"f-string: {m:.1f}")'
+        ),
+    },
+    {
+        "type": "markdown",
+        "content": (
+            "### Exercise 2: Make a hashable `Color` class\n\n"
+            "Create a `Color` with read-only `r`, `g`, `b` components (0-255) that "
+            "can be used in a set."
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "# Exercise 2: Your solution here\n"
+            "class Color:\n"
+            "    __slots__ = ('__r', '__g', '__b')\n\n"
+            "    def __init__(self, r, g, b):\n"
+            "        for val in (r, g, b):\n"
+            "            if not (0 <= val <= 255):\n"
+            "                raise ValueError(f'Component must be 0-255, got {val}')\n"
+            "        object.__setattr__(self, '_Color__r', int(r))\n"
+            "        object.__setattr__(self, '_Color__g', int(g))\n"
+            "        object.__setattr__(self, '_Color__b', int(b))\n\n"
+            "    @property\n"
+            "    def r(self):\n"
+            "        return self.__r\n\n"
+            "    @property\n"
+            "    def g(self):\n"
+            "        return self.__g\n\n"
+            "    @property\n"
+            "    def b(self):\n"
+            "        return self.__b\n\n"
+            "    def __repr__(self):\n"
+            "        return f'Color({self.r}, {self.g}, {self.b})'\n\n"
+            "    def __eq__(self, other):\n"
+            "        if isinstance(other, Color):\n"
+            "            return (self.r, self.g, self.b) == (other.r, other.g, other.b)\n"
+            "        return NotImplemented\n\n"
+            "    def __hash__(self):\n"
+            "        return hash((self.r, self.g, self.b))\n\n"
+            "    @classmethod\n"
+            "    def from_hex(cls, hex_str):\n"
+            '        """Alternative constructor: Color.from_hex(\'#FF8800\')"""\n'
+            "        hex_str = hex_str.lstrip('#')\n"
+            "        return cls(int(hex_str[0:2], 16), int(hex_str[2:4], 16), int(hex_str[4:6], 16))\n\n"
+            "# Test\n"
+            "red = Color(255, 0, 0)\n"
+            "also_red = Color(255, 0, 0)\n"
+            "blue = Color(0, 0, 255)\n"
+            "orange = Color.from_hex('#FF8800')\n\n"
+            'print(f"{red} == {also_red}? {red == also_red}")\n'
+            'print(f"hash equal? {hash(red) == hash(also_red)}")\n'
+            'print(f"Set: { {red, also_red, blue, orange} }")\n'
+            'print(f"From hex: {orange}")\n\n'
+            "# Immutability\n"
+            "try:\n"
+            "    red.r = 128\n"
+            "except AttributeError as e:\n"
+            '    print(f"Immutable: {e}")'
+        ),
+    },
+    {
+        "type": "markdown",
+        "content": (
+            "### Exercise 3: `__slots__` inheritance quiz\n\n"
+            "Predict the output before running the cell."
+        ),
+    },
+    {
+        "type": "code",
+        "content": (
+            "class A:\n"
+            "    __slots__ = ('x',)\n\n"
+            "class B(A):\n"
+            "    __slots__ = ('y',)\n\n"
+            "class C(A):\n"
+            "    pass  # no __slots__\n\n"
+            "b = B()\n"
+            "b.x = 1\n"
+            "b.y = 2\n"
+            'print(f"B instance: x={b.x}, y={b.y}")\n'
+            'print(f"B has __dict__? {hasattr(b, \'__dict__\')}")\n\n'
+            "c = C()\n"
+            "c.x = 1\n"
+            "c.z = 99  # Will this work?\n"
+            'print(f"C instance: x={c.x}, z={c.z}")\n'
+            'print(f"C has __dict__? {hasattr(c, \'__dict__\')}")\n'
+            'print(f"C.__dict__ contents: {c.__dict__}")  # x is NOT here (in slot)'
+        ),
+    },
+    # ── Takeaways ──
+    {
+        "type": "markdown",
+        "content": (
+            "---\n"
+            "## Key Takeaways\n\n"
+            "1. **`__repr__` is for developers, `__str__` is for users.** When in doubt, "
+            "implement `__repr__`; Python falls back to it.\n\n"
+            "2. **`@classmethod` shines for alternative constructors** (like `frombytes`). "
+            "Use `cls` not the class name, so subclasses inherit correctly.\n\n"
+            "3. **Hashability requires consistency:** `__hash__` and `__eq__` must agree. "
+            "Make hashable objects immutable with read-only properties.\n\n"
+            "4. **Name mangling (`__attr`) is safety, not security.** It prevents accidental "
+            "clobbering in subclasses. For simple \"internal use\" markers, prefer `_attr`.\n\n"
+            "5. **`__slots__` trades flexibility for memory.** Only use it when you have "
+            "millions of instances. Remember to redeclare in subclasses.\n\n"
+            "6. **Subclass to override class attributes** rather than mutating the base class. "
+            "Use `type(self).__name__` in `__repr__` so subclasses get correct names for free.\n\n"
+            "7. **\"To build Pythonic objects, observe how real Python objects behave.\"** "
+            "Implement only the special methods your use case demands.\n\n"
+            "**Related chapters:** [[01-python-data-model]], [[12-special-methods-for-sequences]], "
+            "[[16-operator-overloading]]"
+        ),
+    },
+]
+
+build_notebook(
+    "Chapter 11: A Pythonic Object",
+    cells,
+    "library/fluent-python/chapters/11-a-pythonic-object/notebook.ipynb",
+)
+print("Notebook created successfully.")

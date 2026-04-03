@@ -1,0 +1,246 @@
+book: fluent-python
+title: Fluent Python
+total_chapters: 23
+chapters:
+  1:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - boolean-value-custom-types
+    - collection-api-abcs
+    - numeric-type-emulation
+    - sequence-protocol-french-deck
+    - special-dunder-methods
+    - string-representation
+  2:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - augmented-assignment-sequences
+    - list-comprehensions-genexps
+    - pattern-matching-sequences
+    - sequence-unpacking
+    - slicing
+    - tuples-as-records-and-immutable-lists
+  3:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - defaultdict-and-missing
+    - dict-comprehensions-unpacking-merging
+    - dict-variations
+    - hashability
+    - immutable-mappings-and-views
+    - pattern-matching-mappings
+    - set-theory-and-operations
+  4:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - case-folding-and-text-utils
+    - characters-and-bytes
+    - encoding-and-decoding
+    - sorting-unicode
+    - text-file-handling
+    - unicode-database-and-dual-mode
+    - unicode-normalization
+  5:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - classic-named-tuples
+    - data-class-as-code-smell
+    - data-class-builders-overview
+    - dataclass-decorator-and-fields
+    - pattern-matching-class-instances
+    - post-init-and-advanced-features
+    - type-hints-101
+    - typed-named-tuples
+  6:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - del-garbage-collection-interning
+    - function-parameters-as-references
+    - identity-equality-aliases
+    - mutable-defaults-and-defensive-copy
+    - relative-immutability-of-tuples
+    - shallow-vs-deep-copies
+    - variables-are-labels
+  7:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - anonymous-functions-lambda
+    - callable-types
+    - first-class-functions
+    - higher-order-functions
+    - parameter-handling
+    - replacing-map-filter-reduce
+    - user-defined-callable-types
+  8:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - abcs-in-type-hints
+    - any-optional-union
+    - callable-and-noreturn
+    - generic-collections-and-tuples
+    - gradual-typing-and-mypy
+    - static-protocols
+    - typevar-and-parameterized-generics
+  9:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - decorator-fundamentals
+    - functools-cache-lru-cache
+    - implementing-decorators
+    - nonlocal-declaration
+    - parameterized-decorators
+    - singledispatch-generic-functions
+    - variable-scope-and-closures
+  10:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - choosing-best-strategy
+    - classic-strategy-pattern
+    - command-pattern-with-callables
+    - decorator-enhanced-strategy
+    - finding-strategies-via-introspection
+    - function-oriented-strategy
+  11:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - classmethod-vs-staticmethod
+    - hashable-objects
+    - object-representations
+    - overriding-class-attributes
+    - private-and-protected-attributes
+    - read-only-properties
+    - slots
+  12:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - dynamic-attribute-access
+    - formatting-with-format
+    - hashing-and-eq
+    - protocols-and-duck-typing
+    - sliceable-sequence-getitem
+    - vector-multidimensional-sequence
+  13:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - defining-and-subclassing-abcs
+    - dynamic-protocols-and-duck-typing
+    - goose-typing-and-abcs
+    - static-protocols-typing-protocol
+    - typing-map-four-approaches
+    - virtual-subclasses-and-register
+  14:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - cooperative-multiple-inheritance
+    - mixin-classes
+    - multiple-inheritance-mro
+    - real-world-multiple-inheritance
+    - subclassing-built-in-types
+    - super-function
+  15:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - generic-classes
+    - generic-static-protocols
+    - overloaded-signatures
+    - runtime-type-hints
+    - type-casting
+    - typeddict
+    - variance
+  16:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - augmented-assignment-operators
+    - operator-overloading-rules
+    - overloading-add-and-radd
+    - overloading-mul-and-matmul
+    - rich-comparison-operators
+    - unary-operators
+  18:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - context-managers-and-with
+    - contextlib-utilities
+    - contextmanager-decorator
+    - else-blocks-beyond-if
+    - or-patterns
+    - pattern-matching-beyond-sequences
+  19:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - concurrency-vs-parallelism
+    - multicore-prime-checker
+    - python-multicore-ecosystem
+    - spinner-example
+    - the-gil
+    - threads-processes-coroutines
+  20:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - concurrent-futures-overview
+    - error-handling-concurrent
+    - executor-map-behavior
+    - future-objects
+    - process-pool-executor
+    - thread-pool-executor
+  21:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - async-context-managers
+    - async-iterators-and-generators
+    - async-vs-threads-and-pitfalls
+    - asyncio-event-loop-and-http
+    - asyncio-servers
+    - native-coroutines-and-async-await
+    - semaphores-for-throttling
+  22:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - attribute-deletion
+    - caching-properties
+    - computed-properties
+    - dynamic-attributes-and-getattr
+    - essential-attribute-builtins
+    - property-factory
+    - property-for-validation
+  23:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - descriptor-protocol
+    - descriptor-usage-tips
+    - methods-are-descriptors
+    - overriding-vs-nonoverriding-descriptors
+    - validated-descriptor-pattern
+  24:
+    status: done
+    distilled_at: '2026-04-03'
+    concepts:
+    - class-decorators
+    - class-factory-functions
+    - classes-as-objects
+    - import-time-vs-runtime
+    - init-subclass
+    - metaclasses
+    - when-to-use-metaclasses
