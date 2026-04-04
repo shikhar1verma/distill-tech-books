@@ -86,6 +86,10 @@ git push origin main
 | `src/wiki_builder.py validate <dir>` | Check wikilinks + Mermaid diagrams |
 | `src/wiki_builder.py validate-mermaid <dir>` | Check Mermaid diagrams only (requires Node.js) |
 
+## Git Commits
+
+- **Never add `Co-Authored-By` trailers** to commit messages. The repo owner is the sole author of all commits.
+
 ## Safety
 
 - Never `rm -rf`, `sudo`, `git push --force`, `git reset --hard`
