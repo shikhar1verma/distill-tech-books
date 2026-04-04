@@ -11,6 +11,7 @@ Usage:
 """
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -66,14 +67,23 @@ def build_notebook(title, cells, output_path):
     return output_path
 
 
-def validate_notebook(path):
-    """Run notebook and check all cells execute without error.
+def validate_notebook(path, skip_execution=False):
+    """Validate and optionally execute a notebook.
 
+    If skip_execution is True, only validate notebook structure via nbformat.
     Returns (success: bool, error_msg: str|None)
     """
     path = Path(path)
     if not path.exists():
         return False, f"Notebook not found: {path}"
+
+    if skip_execution:
+        try:
+            nb = nbformat.read(str(path), as_version=4)
+            nbformat.validate(nb)
+            return True, None
+        except Exception as e:
+            return False, str(e)
 
     try:
         result = subprocess.run(
@@ -99,37 +109,47 @@ def validate_notebook(path):
         return False, "jupyter nbconvert not found — install jupyterlab"
 
 
-def cells_from_markdown(md_text):
-    """Parse markdown text with code fences into a cell list.
+_FENCE_RE = re.compile(r"^```(\w*)\s*\n(.*?)^```\s*$", re.MULTILINE | re.DOTALL)
 
-    Splits on ```python ... ``` blocks. Everything outside is markdown,
-    everything inside is code. Useful for converting Claude's output
-    into notebook cells.
+
+def cells_from_markdown(md_text, code_languages=None):
+    """Parse markdown with fenced code blocks into notebook cells.
+
+    Args:
+        md_text: Markdown text with fenced code blocks.
+        code_languages: Set of languages to treat as executable code cells.
+                       Default: {"python"}. All other fences stay as markdown.
     """
-    cells = []
-    parts = md_text.split("```python")
+    if code_languages is None:
+        code_languages = {"python"}
 
-    for i, part in enumerate(parts):
-        if i == 0:
-            # First part is always markdown (before any code block)
-            text = part.strip()
-            if text:
-                cells.append({"type": "markdown", "content": text})
-        else:
-            # Split on closing ```
-            if "```" in part:
-                code, rest = part.split("```", 1)
-                code = code.strip()
-                if code:
-                    cells.append({"type": "code", "content": code})
-                rest = rest.strip()
-                if rest:
-                    cells.append({"type": "markdown", "content": rest})
-            else:
-                # Unclosed code block — treat as code anyway
-                code = part.strip()
-                if code:
-                    cells.append({"type": "code", "content": code})
+    cells = []
+    last_end = 0
+
+    for match in _FENCE_RE.finditer(md_text):
+        # Text before this fence = markdown cell
+        before = md_text[last_end : match.start()].strip()
+        if before:
+            cells.append({"type": "markdown", "content": before})
+
+        lang = match.group(1).lower()
+        code = match.group(2).strip()
+
+        if lang in code_languages and code:
+            # Executable code cell (strip fence markers)
+            cells.append({"type": "code", "content": code})
+        elif code:
+            # Non-executable fence — keep as markdown with fence markers
+            cells.append(
+                {"type": "markdown", "content": f"```{match.group(1)}\n{code}\n```"}
+            )
+
+        last_end = match.end()
+
+    # Trailing text after last fence
+    trailing = md_text[last_end:].strip()
+    if trailing:
+        cells.append({"type": "markdown", "content": trailing})
 
     return cells
 

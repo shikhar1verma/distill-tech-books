@@ -1,0 +1,154 @@
+book: system-design-interview-v1
+title: 'System Design Interview'
+total_chapters: 16
+chapters:
+  1:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - caching-strategies
+    - cdn
+    - database-replication
+    - database-sharding
+    - load-balancing
+    - stateless-web-tier
+    - vertical-vs-horizontal-scaling
+  2:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - availability-numbers
+    - latency-numbers
+    - power-of-two
+    - qps-storage-estimation
+  3:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - deep-dive-strategy
+    - dos-and-donts
+    - four-step-framework
+    - high-level-design
+    - requirements-gathering
+  4:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - distributed-rate-limiting
+    - rate-limiter-monitoring
+    - rate-limiter-placement
+    - rate-limiting-algorithms
+    - sliding-window-counter
+    - token-bucket
+  5:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - consistent-hashing
+    - hash-ring
+    - key-redistribution
+    - rehashing-problem
+    - virtual-nodes
+  6:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - cap-theorem
+    - data-partitioning
+    - data-replication
+    - gossip-protocol
+    - merkle-trees
+    - quorum-consensus
+    - vector-clocks
+  7:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - clock-synchronization
+    - multi-master-replication
+    - ticket-server
+    - twitter-snowflake
+    - uuid
+  8:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - back-of-envelope-estimation
+    - base62-conversion
+    - hash-collision-resolution
+    - url-redirecting
+    - url-shortening
+  9:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - content-deduplication
+    - crawler-extensibility
+    - dns-caching
+    - politeness-constraint
+    - url-deduplication
+    - url-frontier
+  10:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - deduplication
+    - message-queue-decoupling
+    - notification-templates
+    - notification-types
+    - rate-limiting-and-opt-in
+    - reliability-and-retry
+  11:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - cache-architecture
+    - fanout-on-write-vs-read
+    - feed-publishing-flow
+    - graph-database-social
+    - newsfeed-retrieval
+  12:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - chat-storage-kv
+    - message-id-generation
+    - message-sync
+    - online-presence
+    - polling-long-polling
+    - service-discovery
+    - websocket-protocol
+  13:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - data-gathering-service
+    - query-service
+    - top-k-caching-in-trie
+    - trie-data-structure
+    - trie-sharding
+  14:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - dag-model
+    - video-streaming
+    - video-system-optimizations
+    - video-transcoding
+    - video-uploading-flow
+  15:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - block-server
+    - file-sync-and-conflict
+    - metadata-database
+    - notification-service
+    - storage-optimization
+  16:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - continuous-learning-strategy
+    - engineering-blogs
+    - real-world-system-architectures

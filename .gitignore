@@ -1,6 +1,10 @@
 # Source PDFs (local drop zone only — copies go to private raw-data/ submodule)
 books/*.pdf
 
+# Node.js (mermaid validator)
+node_modules/
+package-lock.json
+
 # Python
 __pycache__/
 *.pyc

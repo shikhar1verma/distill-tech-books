@@ -26,8 +26,11 @@ index: ## Rebuild all indexes (chapter, concept, book, library)
 	$(PYTHON) src/wiki_builder.py concepts-index $(LIBRARY)/$(BOOK_SLUG)
 	$(PYTHON) src/wiki_builder.py library-index $(LIBRARY)
 
-validate: ## Check for broken wikilinks
+validate: ## Check for broken wikilinks and invalid Mermaid diagrams
 	$(PYTHON) src/wiki_builder.py validate $(LIBRARY)/$(BOOK_SLUG)
+
+validate-mermaid: ## Check for invalid Mermaid diagrams only
+	$(PYTHON) src/wiki_builder.py validate-mermaid $(LIBRARY)/$(BOOK_SLUG)
 
 clean: ## Remove raw extractions from private submodule
 	rm -f $(RAW_DATA)/$(BOOK_SLUG)/*.md

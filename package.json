@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Mermaid diagram validation for distill-tech-books",
+  "dependencies": {
+    "mermaid": "^11.4.0",
+    "jsdom": "^25.0.0"
+  }
+}

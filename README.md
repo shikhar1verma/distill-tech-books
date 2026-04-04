@@ -308,7 +308,8 @@ Also needed: Python 3.11+, JupyterLab (for running notebooks), Claude Code (for 
 **Option A: VS Code** (recommended)
 1. Install the [Foam](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode) extension
 2. Open the `library/` folder
-3. `[[wikilinks]]` become clickable, backlinks panel shows connections, graph view visualizes the knowledge graph
+3. `[[wikilinks]]` become clickable, backlinks panel shows connections, graph view visualizes the knowledge graph.
+4. Install "Markdown Preview Mermaid Support" to render mermaid graph properpy in .md files.
 
 **Option B: Obsidian**
 1. Open `library/` as a vault in [Obsidian](https://obsidian.md)

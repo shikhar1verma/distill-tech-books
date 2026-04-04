@@ -10,6 +10,8 @@ books:
     pdf: "books/Fluent Python.pdf"
     slug: fluent-python
     total_chapters: 24
+    content_type: programming
+    primary_language: python
     parts:
       - name: "Data Structures"
         chapters: [1, 2, 3, 4, 5, 6]
@@ -47,3 +49,26 @@ books:
         - font_pattern: "MinionPro-Semibold"
       body:
         - font_pattern: "MinionPro-Regular"
+
+  system-design-interview-v1:
+    title: "System Design Interview"
+    author: "Alex Xu"
+    edition: "2nd"
+    pdf: "books/System Design Interview An Insider's Guide.pdf"
+    slug: system-design-interview-v1
+    total_chapters: 16
+    content_type: system-design
+    primary_language: null
+    skip_execution: true
+    code_detection: minimal
+
+  system-design-interview-v2:
+    title: "System Design Interview Volume 2"
+    slug: system-design-interview-v2
+    edition: "1st"
+    pdf: "books/System Design Interview_ An Insider guide v2.pdf"
+    total_chapters: 13
+    content_type: system-design
+    primary_language: null
+    skip_execution: true
+    code_detection: minimal

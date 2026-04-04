@@ -1,0 +1,138 @@
+book: system-design-interview-v2
+title: System Design Interview Volume 2
+total_chapters: 13
+chapters:
+  1:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - geohash
+    - geospatial-caching
+    - geospatial-indexing
+    - google-s2
+    - proximity-service-architecture
+    - quadtree
+  2:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - distributed-pub-sub
+    - erlang-alternative
+    - location-cache-ttl
+    - nearby-friends-architecture
+    - redis-pub-sub
+    - websocket-real-time
+  3:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - cdn-map-delivery
+    - eta-service
+    - geocoding
+    - location-service
+    - map-tiling
+    - navigation-service
+    - routing-tiles
+  4:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - batching-and-throughput
+    - consumer-groups
+    - consumer-rebalancing
+    - delivery-semantics
+    - replication-isr
+    - topics-partitions-brokers
+    - write-ahead-log
+  5:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - alerting-system
+    - downsampling-and-retention
+    - metrics-transmission-pipeline
+    - pull-vs-push-collection
+    - time-series-data-model
+    - time-series-database
+  6:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - aggregation-windows
+    - event-time-vs-processing-time
+    - exactly-once-processing
+    - hotspot-mitigation
+    - lambda-kappa-architecture
+    - mapreduce-aggregation
+    - stream-processing-pipeline
+  7:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - concurrency-control
+    - database-sharding-and-caching
+    - distributed-transactions-saga
+    - hotel-microservice-architecture
+    - idempotent-reservation-api
+    - reservation-data-model
+  8:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - distributed-mail-architecture
+    - email-data-model
+    - email-deliverability
+    - email-protocols
+    - email-scalability-availability
+    - email-search
+  9:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - data-persistence-and-routing
+    - erasure-coding
+    - garbage-collection-compaction
+    - metadata-data-separation
+    - multipart-upload
+    - object-storage-fundamentals
+    - object-versioning
+  10:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - leaderboard-architecture
+    - leaderboard-sharding
+    - nosql-leaderboard
+    - redis-sorted-sets
+    - skip-list
+    - sql-vs-redis-ranking
+  11:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - double-entry-ledger
+    - payment-consistency
+    - payment-security
+    - payment-system-architecture
+    - psp-integration
+    - reconciliation
+    - retry-and-idempotency
+  12:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - cqrs
+    - distributed-transactions
+    - event-sourcing
+    - high-performance-event-sourcing
+    - raft-consensus
+  13:
+    status: done
+    distilled_at: '2026-04-04'
+    concepts:
+    - event-sourcing-exchange
+    - market-data-publisher
+    - matching-engine
+    - order-book
+    - risk-checks-order-management
+    - sequencer

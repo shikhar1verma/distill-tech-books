@@ -1,14 +1,17 @@
-"""Generate wiki indexes, validate wikilinks, and update metadata.
+"""Generate wiki indexes, validate wikilinks/mermaid, and update metadata.
 
 Functions:
     build_chapter_index(chapter_dir)   — index.md for a chapter folder
     build_concepts_index(book_dir)     — alphabetical concept index across chapters
     build_book_index(book_dir)         — book-level index.md with chapter nav
     validate_wikilinks(book_dir)       — find broken [[links]]
+    validate_mermaid(book_dir)         — find invalid mermaid diagrams
     update_meta(book_dir, chapter_num, status, concepts)
 """
 
+import json
 import re
+import subprocess
 from datetime import date
 from pathlib import Path
 
@@ -58,7 +61,7 @@ def build_chapter_index(chapter_dir):
     if has_notebook:
         lines.append("## Interactive Notebook")
         lines.append("")
-        lines.append("- [notebook.ipynb](notebook.ipynb) — runnable code examples and exercises")
+        lines.append("- [notebook.ipynb](notebook.ipynb) — interactive examples and exercises")
         lines.append("")
 
     if articles:
@@ -266,6 +269,98 @@ def validate_wikilinks(book_dir):
     return broken
 
 
+def _extract_mermaid_blocks(book_dir):
+    """Extract all mermaid code blocks from .md and .ipynb files.
+
+    Returns list of {"file": str, "line": int, "content": str}
+    """
+    book_dir = Path(book_dir)
+    mermaid_re = re.compile(r"^```mermaid\s*\n(.*?)^```", re.MULTILINE | re.DOTALL)
+    blocks = []
+
+    # Scan .md files
+    for md_file in book_dir.rglob("*.md"):
+        content = md_file.read_text(encoding="utf-8")
+        for match in mermaid_re.finditer(content):
+            line_num = content[: match.start()].count("\n") + 1
+            blocks.append(
+                {
+                    "file": str(md_file.relative_to(book_dir)),
+                    "line": line_num,
+                    "content": match.group(1).strip(),
+                }
+            )
+
+    # Scan .ipynb files (mermaid in markdown cells)
+    for nb_file in book_dir.rglob("*.ipynb"):
+        try:
+            nb = json.loads(nb_file.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for cell_idx, cell in enumerate(nb.get("cells", [])):
+            if cell.get("cell_type") != "markdown":
+                continue
+            source = "".join(cell.get("source", []))
+            for match in mermaid_re.finditer(source):
+                blocks.append(
+                    {
+                        "file": str(nb_file.relative_to(book_dir)),
+                        "line": cell_idx + 1,  # cell index as proxy for line
+                        "content": match.group(1).strip(),
+                    }
+                )
+
+    return blocks
+
+
+def validate_mermaid(book_dir):
+    """Find invalid Mermaid diagrams in the book directory.
+
+    Uses node src/validate-mermaid.mjs for parsing.
+    Returns list of {"file": str, "line": int, "error": str}
+    """
+    blocks = _extract_mermaid_blocks(book_dir)
+    if not blocks:
+        return []
+
+    # Find the validator script relative to this file
+    script = Path(__file__).parent / "validate-mermaid.mjs"
+    if not script.exists():
+        print(f"Warning: {script} not found, skipping Mermaid validation")
+        return []
+
+    try:
+        result = subprocess.run(
+            ["node", str(script)],
+            input=json.dumps(blocks),
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+    except FileNotFoundError:
+        print("Warning: Node.js not found, skipping Mermaid validation")
+        return []
+    except subprocess.TimeoutExpired:
+        print("Warning: Mermaid validation timed out")
+        return []
+
+    if result.returncode != 0:
+        print(f"Warning: Mermaid validator error: {result.stderr[:200]}")
+        return []
+
+    try:
+        results = json.loads(result.stdout)
+    except json.JSONDecodeError:
+        print("Warning: Could not parse Mermaid validator output")
+        return []
+
+    return [
+        {"file": r["file"], "line": r["line"], "error": r["error"]}
+        for r in results
+        if not r["valid"]
+    ]
+
+
 def update_meta(book_dir, chapter_num, status="done", concepts=None):
     """Update _meta.yaml with chapter processing status."""
     book_dir = Path(book_dir)
@@ -318,7 +413,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 3:
         print("Usage: python wiki_builder.py <command> <book_dir>")
-        print("Commands: chapter-index <chapter_dir>, concepts-index, book-index, library-index <library_dir>, validate")
+        print("Commands: chapter-index <chapter_dir>, concepts-index, book-index,")
+        print("          library-index <library_dir>, validate, validate-mermaid")
         sys.exit(1)
 
     cmd = sys.argv[1]
@@ -337,12 +433,35 @@ if __name__ == "__main__":
         result = build_library_index(path)
         print(f"Built: {result}")
     elif cmd == "validate":
+        # Run both wikilink and mermaid validation
+        ok = True
         broken = validate_wikilinks(path)
         if broken:
+            ok = False
             print(f"Found {len(broken)} broken wikilinks:")
             for b in broken:
                 print(f"  {b['file']}:{b['line']} → [[{b['link']}]]")
         else:
             print("All wikilinks valid.")
+
+        mermaid_errors = validate_mermaid(path)
+        if mermaid_errors:
+            ok = False
+            print(f"\nFound {len(mermaid_errors)} invalid Mermaid diagrams:")
+            for e in mermaid_errors:
+                print(f"  {e['file']}:{e['line']} — {e['error']}")
+        else:
+            print("All Mermaid diagrams valid.")
+
+        if ok:
+            print("\nAll checks passed.")
+    elif cmd == "validate-mermaid":
+        errors = validate_mermaid(path)
+        if errors:
+            print(f"Found {len(errors)} invalid Mermaid diagrams:")
+            for e in errors:
+                print(f"  {e['file']}:{e['line']} — {e['error']}")
+        else:
+            print("All Mermaid diagrams valid.")
     else:
         print(f"Unknown command: {cmd}")

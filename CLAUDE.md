@@ -83,7 +83,8 @@ git push origin main
 | `src/notebook_builder.py` | Convert structured cells to valid `.ipynb` |
 | `src/wiki_builder.py book-index <dir>` | Rebuild book-level index |
 | `src/wiki_builder.py concepts-index <dir>` | Rebuild alphabetical concept index |
-| `src/wiki_builder.py validate <dir>` | Check for broken wikilinks |
+| `src/wiki_builder.py validate <dir>` | Check wikilinks + Mermaid diagrams |
+| `src/wiki_builder.py validate-mermaid <dir>` | Check Mermaid diagrams only (requires Node.js) |
 
 ## Safety
 

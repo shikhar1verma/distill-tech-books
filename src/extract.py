@@ -38,7 +38,7 @@ def find_chapters(toc):
     Pages are 1-indexed (as in PDF).
     """
     chapters = []
-    chapter_pattern = re.compile(r"^Chapter\s+(\d+)\.\s+(.+)$")
+    chapter_pattern = re.compile(r"^(?:Chapter|CHAPTER)\s+(\d+)[.:]\s*(.+)$", re.IGNORECASE)
 
     # Find all chapter entries
     chapter_indices = []
@@ -61,7 +61,7 @@ def find_chapters(toc):
                     # Check if it's a Part or non-chapter L2
                     if toc[j]["level"] == 1 or (
                         toc[j]["level"] == 2
-                        and not toc[j]["title"].startswith("Chapter")
+                        and not re.match(r"(?:Chapter|CHAPTER)\s+\d+", toc[j]["title"], re.IGNORECASE)
                     ):
                         end_page = toc[j]["page"] - 1
                         break
@@ -120,18 +120,18 @@ def detect_code_fonts(doc, sample_pages=None):
     return code_fonts
 
 
-def extract_chapter_markdown(doc, chapter, code_fonts=None):
+def extract_chapter_markdown(doc, chapter, code_fonts=None, code_detection="normal", fence_language="python"):
     """Extract a single chapter as markdown using pymupdf4llm + post-processing."""
     # 0-indexed page list
     pages = list(range(chapter["start_page"] - 1, chapter["end_page"]))
 
     md = pymupdf4llm.to_markdown(doc, pages=pages)
 
-    md = postprocess_markdown(md, chapter)
+    md = postprocess_markdown(md, chapter, code_detection=code_detection, fence_language=fence_language)
     return md
 
 
-def postprocess_markdown(md, chapter):
+def postprocess_markdown(md, chapter, code_detection="normal", fence_language="python"):
     """Clean up pymupdf4llm output."""
     # Remove page number footers like "**5**" or "**A Pythonic Card Deck | 5**"
     md = re.sub(
@@ -148,7 +148,7 @@ def postprocess_markdown(md, chapter):
     # Fix bold-code-inline patterns that should be fenced code blocks.
     # pymupdf4llm sometimes renders code as: **`keyword`** `rest of code`
     # Detect sequences of inline code on their own paragraph that look like code blocks
-    md = _repair_inline_code_blocks(md)
+    md = _repair_inline_code_blocks(md, code_detection=code_detection, fence_language=fence_language)
 
     # Remove OCR artifacts
     md = re.sub(r"^=== Document parser messages ===.*?\n\n", "", md, flags=re.DOTALL)
@@ -162,12 +162,13 @@ def postprocess_markdown(md, chapter):
     return md
 
 
-def _repair_inline_code_blocks(md):
+def _repair_inline_code_blocks(md, code_detection="normal", fence_language="python"):
     """Detect paragraphs of inline code and convert to fenced code blocks.
 
     pymupdf4llm sometimes renders multi-line code as a paragraph with
     **`keyword`** `code` patterns instead of fenced blocks.
     """
+    fence_tag = f"```{fence_language}" if fence_language else "```"
     lines = md.split("\n")
     result = []
     i = 0
@@ -187,10 +188,11 @@ def _repair_inline_code_blocks(md):
                 i += 1
 
             if len(code_lines) >= 2 or (
-                len(code_lines) == 1 and _looks_like_code_block(code_lines[0])
+                len(code_lines) == 1
+                and _looks_like_code_block(code_lines[0], detection_mode=code_detection)
             ):
                 result.append("")
-                result.append("```python")
+                result.append(fence_tag)
                 result.extend(code_lines)
                 result.append("```")
                 result.append("")
@@ -198,7 +200,6 @@ def _repair_inline_code_blocks(md):
                 # Single short inline code, keep as-is
                 for cl in code_lines:
                     result.append(f"`{cl}`")
-                i = i  # already advanced
         else:
             result.append(line)
             i += 1
@@ -225,8 +226,14 @@ def _is_inline_code_line(line):
     return False
 
 
-def _looks_like_code_block(line):
+def _looks_like_code_block(line, detection_mode="normal"):
     """Check if a single line looks like it should be a fenced code block."""
+    if detection_mode == "minimal":
+        # Only match REPL prompts and heavily indented blocks
+        return line.strip().startswith(">>> ") or (
+            len(line) - len(line.lstrip()) >= 8
+        )
+
     keywords = [
         "import ",
         "from ",
@@ -345,7 +352,8 @@ def cmd_init(pdf_path, slug, library_dir="library", raw_dir="raw-data"):
     return chapters
 
 
-def cmd_extract(pdf_path, slug, library_dir="library", raw_dir="raw-data", chapter_num=None):
+def cmd_extract(pdf_path, slug, library_dir="library", raw_dir="raw-data", chapter_num=None,
+                code_detection="normal", fence_language="python"):
     """Extract chapters to raw markdown.
 
     Raw markdown goes to raw-data/<slug>/ (private submodule).
@@ -369,12 +377,15 @@ def cmd_extract(pdf_path, slug, library_dir="library", raw_dir="raw-data", chapt
 
     code_fonts = detect_code_fonts(doc)
     print(f"Detected code fonts: {code_fonts}")
+    print(f"Code detection: {code_detection}, fence language: {fence_language}")
 
     for ch in chapters:
         print(f"Extracting Chapter {ch['number']}: {ch['title']}...")
 
         # Extract markdown
-        md = extract_chapter_markdown(doc, ch, code_fonts)
+        md = extract_chapter_markdown(doc, ch, code_fonts,
+                                      code_detection=code_detection,
+                                      fence_language=fence_language)
         frontmatter = build_frontmatter(ch)
 
         out_path = raw_book_dir / f"chapter-{ch['number']:02d}.md"
@@ -406,13 +417,19 @@ def main():
     p_extract.add_argument("--chapter", type=int, help="Extract only this chapter number")
     p_extract.add_argument("--library-dir", default="library")
     p_extract.add_argument("--raw-dir", default="raw-data", help="Raw output directory (private submodule)")
+    p_extract.add_argument("--code-detection", choices=["normal", "minimal"], default="normal",
+                           help="Code block detection mode (minimal for non-code books)")
+    p_extract.add_argument("--fence-language", default="python",
+                           help="Language tag for fenced code blocks (use 'none' for no tag)")
 
     args = parser.parse_args()
 
     if args.command == "init":
         cmd_init(args.pdf, args.slug, args.library_dir, args.raw_dir)
     elif args.command == "extract":
-        cmd_extract(args.pdf, args.slug, args.library_dir, args.raw_dir, args.chapter)
+        fence_lang = args.fence_language if args.fence_language != "none" else None
+        cmd_extract(args.pdf, args.slug, args.library_dir, args.raw_dir, args.chapter,
+                    code_detection=args.code_detection, fence_language=fence_lang)
     else:
         parser.print_help()
 
