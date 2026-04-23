@@ -12,25 +12,15 @@ chapters:
     - data-files-and-index-files
     - buffering-immutability-ordering
   2:
-    title: B-Tree Basics
-    pages: 45-64
-    sections:
-    - Binary Search Trees
-    - Tree Balancing
-    - Trees for Disk-Based Storage
-    - Disk-Based Structures
-    - Hard Disk Drives
-    - Solid State Drives
-    - On-Disk Structures
-    - Ubiquitous B-Trees
-    - B-Tree Hierarchy
-    - Separator Keys
-    - B-Tree Lookup Complexity
-    - B-Tree Lookup Algorithm
-    - Counting Keys
-    - B-Tree Node Splits
-    - B-Tree Node Merges
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - bst-limitations-for-disk
+    - disk-hardware-and-block-io
+    - on-disk-structure-design-principles
+    - btree-hierarchy-and-separator-keys
+    - btree-lookup-algorithm-and-complexity
+    - btree-node-splits-and-merges
   3:
     status: done
     distilled_at: '2026-04-23'
@@ -54,29 +44,16 @@ chapters:
     - right-only-appends-and-bulk-loading
     - vacuum-and-page-defragmentation
   5:
-    title: Transaction Processing and Recovery
-    pages: 99-130
-    sections:
-    - Buffer Management
-    - Caching Semantics
-    - Cache Eviction
-    - Locking Pages in Cache
-    - Page Replacement
-    - Recovery
-    - Log Semantics
-    - Operation Versus Data Log
-    - Steal and Force Policies
-    - ARIES
-    - Concurrency Control
-    - Serializability
-    - Transaction Isolation
-    - Read and Write Anomalies
-    - Isolation Levels
-    - Optimistic Concurrency Control
-    - Multiversion Concurrency Control
-    - Pessimistic Concurrency Control
-    - Lock-Based Concurrency Control
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - page-cache-and-buffer-management
+    - page-replacement-algorithms
+    - write-ahead-log-and-recovery
+    - steal-force-policies-and-aries
+    - isolation-levels-and-anomalies
+    - concurrency-control-strategies
+    - locks-latches-and-btree-concurrency
   6:
     title: B-Tree Variants
     pages: 131-148
