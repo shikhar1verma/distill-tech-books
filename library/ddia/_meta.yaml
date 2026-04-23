@@ -14,23 +14,15 @@ chapters:
     - distributed-vs-single-node-systems
     - microservices-and-serverless
   2:
-    title: Defining Nonfunctional Requirements
-    pages: 57-88
-    sections:
-    - Representing Users, Posts, and Follows
-    - Materializing and Updating Timelines
-    - Latency and Response Time
-    - Average, Median, and Percentiles
-    - Use of Response Time Metrics
-    - Fault Tolerance
-    - Hardware and Software Faults
-    - Humans and Reliability
-    - Understanding Load
-    - Shared-Memory, Shared-Disk, and Shared-Nothing Architectures
-    - Principles for Scalability
-    - 'Operability: Making Life Easy for Operations'
-    - 'Simplicity: Managing Complexity'
-    - 'Evolvability: Making Change Easy'
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - social-network-timeline-case-study
+    - response-time-percentiles-and-tail-latency
+    - metastable-failure-and-overload-control
+    - reliability-and-fault-tolerance
+    - scaling-architectures-shared-nothing
+    - maintainability-operability-simplicity-evolvability
   3:
     title: Data Models and Query Languages
     pages: 89-138
