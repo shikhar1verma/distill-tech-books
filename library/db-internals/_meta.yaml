@@ -55,26 +55,14 @@ chapters:
     - concurrency-control-strategies
     - locks-latches-and-btree-concurrency
   6:
-    title: B-Tree Variants
-    pages: 131-148
-    sections:
-    - Copy-on-Write
-    - 'Implementing Copy-on-Write: LMDB'
-    - Abstracting Node Updates
-    - Lazy B-Trees
-    - WiredTiger
-    - Lazy-Adaptive Tree
-    - FD-Trees
-    - Fractional Cascading
-    - Logarithmic Runs
-    - Bw-Trees
-    - Update Chains
-    - Taming Concurrency with Compare-and-Swap
-    - Structural Modification Operations
-    - Consolidation and Garbage Collection
-    - Cache-Oblivious B-Trees
-    - van Emde Boas Layout
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - copy-on-write-b-trees
+    - lazy-b-trees-and-buffering
+    - fd-trees
+    - bw-trees
+    - cache-oblivious-b-trees
   7:
     title: Log-Structured Storage
     pages: 149-190
