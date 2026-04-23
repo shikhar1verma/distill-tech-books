@@ -35,21 +35,16 @@ chapters:
     - graphql
     - event-sourcing-and-cqrs
   4:
-    title: Storage and Retrieval
-    pages: 139-184
-    sections:
-    - Log-Structured Storage
-    - B-Trees
-    - Comparing B-Trees and LSM-Trees
-    - Multicolumn and Secondary Indexes
-    - Storing Values Within the Index
-    - Keeping Everything in Memory
-    - Cloud Data Warehouses
-    - Column-Oriented Storage
-    - 'Query Execution: Compilation and Vectorization'
-    - Materialized Views and Data Cubes
-    - Full-Text Search
-    - Vector Embeddings
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - log-structured-storage-lsm-trees
+    - b-trees-and-page-oriented-storage
+    - comparing-btrees-and-lsm-trees
+    - secondary-and-clustered-indexes
+    - column-oriented-storage
+    - query-execution-and-materialized-views
+    - multidimensional-and-vector-indexes
   5:
     title: Encoding and Evolution
     pages: 185-220
