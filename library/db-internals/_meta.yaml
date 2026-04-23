@@ -32,45 +32,27 @@ chapters:
     - B-Tree Node Merges
     - Summary
   3:
-    title: File Formats
-    pages: 65-80
-    sections:
-    - Motivation
-    - Binary Encoding
-    - Primitive Types
-    - Strings and Variable-Size Data
-    - 'Bit-Packed Data: Booleans, Enums, and Flags'
-    - General Principles
-    - Page Structure
-    - Slotted Pages
-    - Cell Layout
-    - Combining Cells into Slotted Pages
-    - Managing Variable-Size Data
-    - Versioning
-    - Checksumming
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - binary-encoding-primitives
+    - file-organization-principles
+    - slotted-pages
+    - cell-layout
+    - managing-free-space
+    - file-format-versioning
+    - checksums-and-crcs
   4:
-    title: Implementing B-Trees
-    pages: 81-98
-    sections:
-    - Page Header
-    - Magic Numbers
-    - Sibling Links
-    - Rightmost Pointers
-    - Node High Keys
-    - Overflow Pages
-    - Binary Search
-    - Binary Search with Indirection Pointers
-    - Propagating Splits and Merges
-    - Breadcrumbs
-    - Rebalancing
-    - Right-Only Appends
-    - Bulk Loading
-    - Compression
-    - Vacuum and Maintenance
-    - Fragmentation Caused by Updates and Deletes
-    - Page Defragmentation
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - page-header-and-navigation-links
+    - overflow-pages
+    - binary-search-with-indirection-pointers
+    - breadcrumbs-and-parent-pointers
+    - rebalancing-and-b-star-trees
+    - right-only-appends-and-bulk-loading
+    - vacuum-and-page-defragmentation
   5:
     title: Transaction Processing and Recovery
     pages: 99-130
