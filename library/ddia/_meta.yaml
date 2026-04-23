@@ -1,0 +1,202 @@
+book: ddia
+title: Designing Data-Intensive Applications
+total_chapters: 14
+chapters:
+  1:
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - operational-vs-analytical-systems
+    - data-warehousing-and-data-lakes
+    - systems-of-record-and-derived-data
+    - cloud-vs-self-hosting
+    - separation-of-storage-and-compute
+    - distributed-vs-single-node-systems
+    - microservices-and-serverless
+  2:
+    title: Defining Nonfunctional Requirements
+    pages: 57-88
+    sections:
+    - Representing Users, Posts, and Follows
+    - Materializing and Updating Timelines
+    - Latency and Response Time
+    - Average, Median, and Percentiles
+    - Use of Response Time Metrics
+    - Fault Tolerance
+    - Hardware and Software Faults
+    - Humans and Reliability
+    - Understanding Load
+    - Shared-Memory, Shared-Disk, and Shared-Nothing Architectures
+    - Principles for Scalability
+    - 'Operability: Making Life Easy for Operations'
+    - 'Simplicity: Managing Complexity'
+    - 'Evolvability: Making Change Easy'
+  3:
+    title: Data Models and Query Languages
+    pages: 89-138
+    sections:
+    - The Object-Relational Mismatch
+    - Normalization, Denormalization, and Joins
+    - Many-to-One and Many-to-Many Relationships
+    - 'Stars and Snowflakes: Schemas for Analytics'
+    - When to Use Which Model
+    - Property Graphs
+    - The Cypher Query Language
+    - Graph Queries in SQL
+    - Triple Stores and SPARQL
+    - 'Datalog: Recursive Relational Queries'
+    - GraphQL
+  4:
+    title: Storage and Retrieval
+    pages: 139-184
+    sections:
+    - Log-Structured Storage
+    - B-Trees
+    - Comparing B-Trees and LSM-Trees
+    - Multicolumn and Secondary Indexes
+    - Storing Values Within the Index
+    - Keeping Everything in Memory
+    - Cloud Data Warehouses
+    - Column-Oriented Storage
+    - 'Query Execution: Compilation and Vectorization'
+    - Materialized Views and Data Cubes
+    - Full-Text Search
+    - Vector Embeddings
+  5:
+    title: Encoding and Evolution
+    pages: 185-220
+    sections:
+    - Language-Specific Formats
+    - JSON, XML, and Binary Variants
+    - Protocol Buffers
+    - Avro
+    - The Merits of Schemas
+    - Dataflow Through Databases
+    - 'Dataflow Through Services: REST and RPC'
+    - Durable Execution and Workflows
+    - Event-Driven Architectures
+  6:
+    title: Replication
+    pages: 221-274
+    sections:
+    - Synchronous Versus Asynchronous Replication
+    - Setting Up New Followers
+    - Handling Node Outages
+    - Implementation of Replication Logs
+    - Problems with Replication Lag
+    - Solutions for Replication Lag
+    - Geographically Distributed Operation
+    - Sync Engines and Local-First Software
+    - Dealing with Conflicting Writes
+    - Writing to the Database When a Node Is Down
+    - Single-Leader Versus Leaderless Replication Performance
+    - Multi-Region Operation
+    - Detecting Concurrent Writes
+  7:
+    title: Sharding
+    pages: 275-300
+    sections:
+    - Sharding by Key Range
+    - Sharding by Hash of Key
+    - Skewed Workloads and Relieving Hot Spots
+    - 'Operations: Automatic Versus Manual Rebalancing'
+    - Local Secondary Indexes
+    - Global Secondary Indexes
+  8:
+    title: Transactions
+    pages: 301-368
+    sections:
+    - The Meaning of ACID
+    - Single-Object and Multi-Object Operations
+    - Read Committed
+    - Snapshot Isolation and Repeatable Read
+    - Preventing Lost Updates
+    - Write Skew and Phantoms
+    - Actual Serial Execution
+    - Two-Phase Locking
+    - Serializable Snapshot Isolation
+    - Two-Phase Commit
+    - Distributed Transactions Across Different Systems
+    - Database-Internal Distributed Transactions
+    - Exactly-Once Message Processing Revisited
+  9:
+    title: The Trouble with Distributed Systems
+    pages: 369-424
+    sections:
+    - The Limitations of TCP
+    - Network Faults in Practice
+    - Fault Detection
+    - Timeouts and Unbounded Delays
+    - Synchronous Versus Asynchronous Networks
+    - Monotonic Versus Time-of-Day Clocks
+    - Clock Synchronization and Accuracy
+    - Relying on Synchronized Clocks
+    - Process Pauses
+    - The Majority Rules
+    - Distributed Locks and Leases
+    - Byzantine Faults
+    - System Model and Reality
+    - Formal Methods and Randomized Testing
+  10:
+    title: Consistency and Consensus
+    pages: 425-474
+    sections:
+    - What Makes a System Linearizable?
+    - Relying on Linearizability
+    - Implementing Linearizable Systems
+    - The Cost of Linearizability
+    - Logical Clocks
+    - Linearizable ID Generators
+    - The Many Faces of Consensus
+    - Consensus in Practice
+    - Coordination Services
+  11:
+    title: Batch Processing
+    pages: 475-510
+    sections:
+    - Simple Log Analysis
+    - Chain of Commands Versus Custom Program
+    - Sorting Versus In-Memory Aggregation
+    - Distributed Filesystems
+    - Object Stores
+    - Distributed Job Orchestration
+    - MapReduce
+    - Dataflow Engines
+    - Shuffling Data
+    - Joins and Grouping
+    - Query Languages
+    - DataFrames
+    - Extract–Transform–Load
+    - Analytics
+    - Machine Learning
+    - Serving Derived Data
+  12:
+    title: Stream Processing
+    pages: 511-562
+    sections:
+    - Messaging Systems
+    - Log-Based Message Brokers
+    - Keeping Systems in Sync
+    - Change Data Capture
+    - State, Streams, and Immutability
+    - Uses of Stream Processing
+    - Reasoning About Time
+    - Stream Joins
+    - Fault Tolerance
+  13:
+    title: A Philosophy of Streaming Systems
+    pages: 563-608
+    sections:
+    - Combining Specialized Tools by Deriving Data
+    - Batch and Stream Processing
+    - Composing Data Storage Technologies
+    - Designing Applications Around Dataflow
+    - Observing Derived State
+    - The End-to-End Argument for Databases
+    - Enforcing Constraints
+    - Timeliness and Integrity
+    - Trust, but Verify
+  14:
+    title: Doing the Right Thing
+    pages: 609-609
+    sections: []

@@ -72,3 +72,41 @@ books:
     primary_language: null
     skip_execution: true
     code_detection: minimal
+
+  db-internals:
+    title: "Database Internals"
+    author: "Alex Petrov"
+    edition: "1st"
+    pdf: "books/Database Internals by Alex Petrov.pdf"
+    slug: db-internals
+    total_chapters: 14
+    content_type: system-design
+    primary_language: null
+    skip_execution: true
+    code_detection: minimal
+    parts:
+      - name: "Storage Engines"
+        chapters: [1, 2, 3, 4, 5, 6, 7]
+      - name: "Distributed Systems"
+        chapters: [8, 9, 10, 11, 12, 13, 14]
+    priority_order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+  ddia:
+    title: "Designing Data-Intensive Applications"
+    author: "Martin Kleppmann"
+    edition: "2nd"
+    pdf: "books/Designing Data-Intensive Applications.pdf"
+    slug: ddia
+    total_chapters: 14
+    content_type: system-design
+    primary_language: null
+    skip_execution: true
+    code_detection: minimal
+    parts:
+      - name: "Foundations of Data Systems"
+        chapters: [1, 2, 3, 4, 5]
+      - name: "Distributed Data"
+        chapters: [6, 7, 8, 9, 10]
+      - name: "Derived Data"
+        chapters: [11, 12, 13, 14]
+    priority_order: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
