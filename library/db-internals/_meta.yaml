@@ -1,0 +1,270 @@
+book: db-internals
+title: Database Internals
+total_chapters: 14
+chapters:
+  1:
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - dbms-architecture
+    - memory-vs-disk-based-storage
+    - row-vs-column-oriented-layouts
+    - data-files-and-index-files
+    - buffering-immutability-ordering
+  2:
+    title: B-Tree Basics
+    pages: 45-64
+    sections:
+    - Binary Search Trees
+    - Tree Balancing
+    - Trees for Disk-Based Storage
+    - Disk-Based Structures
+    - Hard Disk Drives
+    - Solid State Drives
+    - On-Disk Structures
+    - Ubiquitous B-Trees
+    - B-Tree Hierarchy
+    - Separator Keys
+    - B-Tree Lookup Complexity
+    - B-Tree Lookup Algorithm
+    - Counting Keys
+    - B-Tree Node Splits
+    - B-Tree Node Merges
+    - Summary
+  3:
+    title: File Formats
+    pages: 65-80
+    sections:
+    - Motivation
+    - Binary Encoding
+    - Primitive Types
+    - Strings and Variable-Size Data
+    - 'Bit-Packed Data: Booleans, Enums, and Flags'
+    - General Principles
+    - Page Structure
+    - Slotted Pages
+    - Cell Layout
+    - Combining Cells into Slotted Pages
+    - Managing Variable-Size Data
+    - Versioning
+    - Checksumming
+    - Summary
+  4:
+    title: Implementing B-Trees
+    pages: 81-98
+    sections:
+    - Page Header
+    - Magic Numbers
+    - Sibling Links
+    - Rightmost Pointers
+    - Node High Keys
+    - Overflow Pages
+    - Binary Search
+    - Binary Search with Indirection Pointers
+    - Propagating Splits and Merges
+    - Breadcrumbs
+    - Rebalancing
+    - Right-Only Appends
+    - Bulk Loading
+    - Compression
+    - Vacuum and Maintenance
+    - Fragmentation Caused by Updates and Deletes
+    - Page Defragmentation
+    - Summary
+  5:
+    title: Transaction Processing and Recovery
+    pages: 99-130
+    sections:
+    - Buffer Management
+    - Caching Semantics
+    - Cache Eviction
+    - Locking Pages in Cache
+    - Page Replacement
+    - Recovery
+    - Log Semantics
+    - Operation Versus Data Log
+    - Steal and Force Policies
+    - ARIES
+    - Concurrency Control
+    - Serializability
+    - Transaction Isolation
+    - Read and Write Anomalies
+    - Isolation Levels
+    - Optimistic Concurrency Control
+    - Multiversion Concurrency Control
+    - Pessimistic Concurrency Control
+    - Lock-Based Concurrency Control
+    - Summary
+  6:
+    title: B-Tree Variants
+    pages: 131-148
+    sections:
+    - Copy-on-Write
+    - 'Implementing Copy-on-Write: LMDB'
+    - Abstracting Node Updates
+    - Lazy B-Trees
+    - WiredTiger
+    - Lazy-Adaptive Tree
+    - FD-Trees
+    - Fractional Cascading
+    - Logarithmic Runs
+    - Bw-Trees
+    - Update Chains
+    - Taming Concurrency with Compare-and-Swap
+    - Structural Modification Operations
+    - Consolidation and Garbage Collection
+    - Cache-Oblivious B-Trees
+    - van Emde Boas Layout
+    - Summary
+  7:
+    title: Log-Structured Storage
+    pages: 149-190
+    sections:
+    - LSM Trees
+    - LSM Tree Structure
+    - Updates and Deletes
+    - LSM Tree Lookups
+    - Merge-Iteration
+    - Reconciliation
+    - Maintenance in LSM Trees
+    - Read, Write, and Space Amplification
+    - RUM Conjecture
+    - Implementation Details
+    - Sorted String Tables
+    - Bloom Filters
+    - Skiplist
+    - Disk Access
+    - Compression
+    - Unordered LSM Storage
+    - Bitcask
+    - WiscKey
+    - Concurrency in LSM Trees
+    - Log Stacking
+    - Flash Translation Layer
+    - Filesystem Logging
+    - LLAMA and Mindful Stacking
+    - Open-Channel SSDs
+    - Summary
+  8:
+    title: Introduction and Overview
+    pages: 191-214
+    sections:
+    - Concurrent Execution
+    - Shared State in a Distributed System
+    - Fallacies of Distributed Computing
+    - Processing
+    - Clocks and Time
+    - State Consistency
+    - Local and Remote Execution
+    - Need to Handle Failures
+    - Network Partitions and Partial Failures
+    - Cascading Failures
+    - Distributed Systems Abstractions
+    - Links
+    - Two Generals’ Problem
+    - FLP Impossibility
+    - System Synchrony
+    - Failure Models
+    - Crash Faults
+    - Omission Faults
+    - Arbitrary Faults
+    - Handling Failures
+    - Summary
+  9:
+    title: Failure Detection
+    pages: 215-224
+    sections:
+    - Heartbeats and Pings
+    - Timeout-Free Failure Detector
+    - Outsourced Heartbeats
+    - Phi-Accural Failure Detector
+    - Gossip and Failure Detection
+    - Reversing Failure Detection Problem Statement
+    - Summary
+  10:
+    title: Leader Election
+    pages: 225-234
+    sections:
+    - Bully Algorithm
+    - Next-In-Line Failover
+    - Candidate/Ordinary Optimization
+    - Invitation Algorithm
+    - Ring Algorithm
+    - Summary
+  11:
+    title: Replication and Consistency
+    pages: 235-262
+    sections:
+    - Achieving Availability
+    - Infamous CAP
+    - Use CAP Carefully
+    - Harvest and Yield
+    - Shared Memory
+    - Ordering
+    - Consistency Models
+    - Strict Consistency
+    - Linearizability
+    - Sequential Consistency
+    - Causal Consistency
+    - Session Models
+    - Eventual Consistency
+    - Tunable Consistency
+    - Witness Replicas
+    - Strong Eventual Consistency and CRDTs
+    - Summary
+  12:
+    title: Anti-Entropy and Dissemination
+    pages: 263-276
+    sections:
+    - Read Repair
+    - Digest Reads
+    - Hinted Handoff
+    - Merkle Trees
+    - Bitmap Version Vectors
+    - Gossip Dissemination
+    - Gossip Mechanics
+    - Overlay Networks
+    - Hybrid Gossip
+    - Partial Views
+    - Summary
+  13:
+    title: Distributed Transactions
+    pages: 277-298
+    sections:
+    - Making Operations Appear Atomic
+    - Two-Phase Commit
+    - Cohort Failures in 2PC
+    - Coordinator Failures in 2PC
+    - Three-Phase Commit
+    - Coordinator Failures in 3PC
+    - Distributed Transactions with Calvin
+    - Distributed Transactions with Spanner
+    - Database Partitioning
+    - Consistent Hashing
+    - Distributed Transactions with Percolator
+    - Coordination Avoidance
+    - Summary
+  14:
+    title: Consensus
+    pages: 299-332
+    sections:
+    - Broadcast
+    - Atomic Broadcast
+    - Virtual Synchrony
+    - Zookeeper Atomic Broadcast (ZAB)
+    - Paxos
+    - Paxos Algorithm
+    - Quorums in Paxos
+    - Failure Scenarios
+    - Multi-Paxos
+    - Fast Paxos
+    - Egalitarian Paxos
+    - Flexible Paxos
+    - Generalized Solution to Consensus
+    - Raft
+    - Leader Role in Raft
+    - Failure Scenarios
+    - Byzantine Consensus
+    - PBFT Algorithm
+    - Recovery and Checkpointing
+    - Summary
