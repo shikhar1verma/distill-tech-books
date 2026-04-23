@@ -11,5 +11,7 @@ type: book-index
 - 📓 **Ch 02**: [Defining Nonfunctional Requirements](chapters/02-defining-nonfunctional-requirements/index.md) — 6 concepts
 - 📓 **Ch 03**: [Data Models And Query Languages](chapters/03-data-models-and-query-languages/index.md) — 7 concepts
 - 📓 **Ch 04**: [Storage And Retrieval](chapters/04-storage-and-retrieval/index.md) — 7 concepts
+- 📓 **Ch 05**: [Encoding And Evolution](chapters/05-encoding-and-evolution/index.md) — 7 concepts
+- 📓 **Ch 06**: [Replication](chapters/06-replication/index.md) — 7 concepts
 
 ## [Concept Index](concepts/index.md)

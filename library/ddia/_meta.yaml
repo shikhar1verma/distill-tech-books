@@ -46,35 +46,27 @@ chapters:
     - query-execution-and-materialized-views
     - multidimensional-and-vector-indexes
   5:
-    title: Encoding and Evolution
-    pages: 185-220
-    sections:
-    - Language-Specific Formats
-    - JSON, XML, and Binary Variants
-    - Protocol Buffers
-    - Avro
-    - The Merits of Schemas
-    - Dataflow Through Databases
-    - 'Dataflow Through Services: REST and RPC'
-    - Durable Execution and Workflows
-    - Event-Driven Architectures
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - backward-forward-compatibility-and-rolling-upgrades
+    - textual-encodings-and-json-schema
+    - protocol-buffers-field-tags-and-schema-evolution
+    - avro-writer-and-reader-schemas
+    - dataflow-through-databases
+    - rest-rpc-and-service-discovery
+    - async-dataflow-brokers-actors-durable-execution
   6:
-    title: Replication
-    pages: 221-274
-    sections:
-    - Synchronous Versus Asynchronous Replication
-    - Setting Up New Followers
-    - Handling Node Outages
-    - Implementation of Replication Logs
-    - Problems with Replication Lag
-    - Solutions for Replication Lag
-    - Geographically Distributed Operation
-    - Sync Engines and Local-First Software
-    - Dealing with Conflicting Writes
-    - Writing to the Database When a Node Is Down
-    - Single-Leader Versus Leaderless Replication Performance
-    - Multi-Region Operation
-    - Detecting Concurrent Writes
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - single-leader-replication-and-logs
+    - replication-lag-and-consistency-guarantees
+    - multi-leader-replication-and-topologies
+    - sync-engines-and-local-first-software
+    - conflict-resolution-lww-crdts-ot
+    - leaderless-replication-and-quorums
+    - detecting-concurrent-writes-version-vectors
   7:
     title: Sharding
     pages: 275-300
