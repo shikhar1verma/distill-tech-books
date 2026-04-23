@@ -24,20 +24,16 @@ chapters:
     - scaling-architectures-shared-nothing
     - maintainability-operability-simplicity-evolvability
   3:
-    title: Data Models and Query Languages
-    pages: 89-138
-    sections:
-    - The Object-Relational Mismatch
-    - Normalization, Denormalization, and Joins
-    - Many-to-One and Many-to-Many Relationships
-    - 'Stars and Snowflakes: Schemas for Analytics'
-    - When to Use Which Model
-    - Property Graphs
-    - The Cypher Query Language
-    - Graph Queries in SQL
-    - Triple Stores and SPARQL
-    - 'Datalog: Recursive Relational Queries'
-    - GraphQL
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - relational-vs-document-models
+    - normalization-and-denormalization
+    - star-and-snowflake-schemas
+    - property-graphs-and-cypher
+    - triple-stores-and-datalog
+    - graphql
+    - event-sourcing-and-cqrs
   4:
     title: Storage and Retrieval
     pages: 139-184
