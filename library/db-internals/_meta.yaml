@@ -232,22 +232,16 @@ chapters:
     - gossip-dissemination
     - hybrid-gossip-and-partial-views
   13:
-    title: Distributed Transactions
-    pages: 277-298
-    sections:
-    - Making Operations Appear Atomic
-    - Two-Phase Commit
-    - Cohort Failures in 2PC
-    - Coordinator Failures in 2PC
-    - Three-Phase Commit
-    - Coordinator Failures in 3PC
-    - Distributed Transactions with Calvin
-    - Distributed Transactions with Spanner
-    - Database Partitioning
-    - Consistent Hashing
-    - Distributed Transactions with Percolator
-    - Coordination Avoidance
-    - Summary
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - two-phase-commit
+    - three-phase-commit
+    - calvin-deterministic-transactions
+    - spanner-truetime
+    - consistent-hashing
+    - percolator-snapshot-isolation
+    - coordination-avoidance-ramp
   14:
     status: done
     distilled_at: '2026-04-24'

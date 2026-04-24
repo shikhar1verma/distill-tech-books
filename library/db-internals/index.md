@@ -19,7 +19,7 @@ type: book-index
 - 📓 **Ch 10**: [Leader Election](chapters/10-leader-election/index.md) — 6 concepts
 - 📓 **Ch 11**: [Replication And Consistency](chapters/11-replication-and-consistency/index.md) — 7 concepts
 - 📓 **Ch 12**: [Anti Entropy And Dissemination](chapters/12-anti-entropy-and-dissemination/index.md) — 6 concepts
-- 📄 **Ch 13**: [Distributed Transactions](chapters/13-distributed-transactions/index.md) — 1 concepts
+- 📓 **Ch 13**: [Distributed Transactions](chapters/13-distributed-transactions/index.md) — 7 concepts
 - 📓 **Ch 14**: [Consensus](chapters/14-consensus/index.md) — 6 concepts
 
 ## [Concept Index](concepts/index.md)

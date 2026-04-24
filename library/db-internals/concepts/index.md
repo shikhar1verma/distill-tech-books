@@ -22,6 +22,7 @@ Alphabetical listing of all concepts across chapters.
 - [[01-page-cache-and-buffer-management]] — Page Cache and Buffer Management _(Ch. 05)_
 - [[01-page-header-and-navigation-links]] — Page Header and Navigation Links _(Ch. 04)_
 - [[01-read-repair-and-digest-reads]] — Read Repair and Digest Reads _(Ch. 12)_
+- [[01-two-phase-commit]] — Two-Phase Commit (2PC) _(Ch. 13)_
 - [[02-bully-algorithm]] — Bully Algorithm and Next-In-Line Failover _(Ch. 10)_
 - [[02-disk-hardware-and-block-io]] — Disk Hardware and the Block I/O Model _(Ch. 02)_
 - [[02-file-organization-principles]] — File Organization: Headers, Pages, and Fixed Schemas _(Ch. 03)_
@@ -32,10 +33,12 @@ Alphabetical listing of all concepts across chapters.
 - [[02-overflow-pages]] — Overflow Pages for Variable-Size Records _(Ch. 04)_
 - [[02-page-replacement-algorithms]] — Page Replacement Algorithms _(Ch. 05)_
 - [[02-partial-failures-and-cascading-failures]] — Partial Failures and Cascading Failures _(Ch. 08)_
+- [[02-three-phase-commit]] — Three-Phase Commit (3PC) _(Ch. 13)_
 - [[02-timeout-free-failure-detector]] — Timeout-Free Failure Detector _(Ch. 09)_
 - [[02-tombstones-and-merge-reconciliation]] — Tombstones, Merge-Iteration, and Reconciliation _(Ch. 07)_
 - [[02-zookeeper-atomic-broadcast-zab]] — Zookeeper Atomic Broadcast (ZAB) _(Ch. 14)_
 - [[03-binary-search-with-indirection-pointers]] — Binary Search with Indirection Pointers _(Ch. 04)_
+- [[03-calvin-deterministic-transactions]] — Calvin: Deterministic Distributed Transactions _(Ch. 13)_
 - [[03-candidate-ordinary-optimization]] — Candidate/Ordinary Optimization _(Ch. 10)_
 - [[03-classic-paxos]] — Classic Paxos Algorithm _(Ch. 14)_
 - [[03-compaction-strategies]] — Compaction Strategies: Leveled, Size-Tiered, and Time-Window _(Ch. 07)_
@@ -59,12 +62,14 @@ Alphabetical listing of all concepts across chapters.
 - [[04-multi-paxos-and-variants]] — Multi-Paxos and Paxos Variants _(Ch. 14)_
 - [[04-phi-accrual-failure-detector]] — Phi-Accrual Failure Detector _(Ch. 09)_
 - [[04-rum-conjecture-and-amplification]] — RUM Conjecture and the Three Amplifications _(Ch. 07)_
+- [[04-spanner-truetime]] — Spanner: 2PC over Paxos with TrueTime _(Ch. 13)_
 - [[04-steal-force-policies-and-aries]] — Steal/Force Policies and ARIES _(Ch. 05)_
 - [[04-two-generals-problem]] — Two Generals' Problem _(Ch. 08)_
 - [[05-bloom-filters-and-skiplists]] — Read-Path Optimizations: SSTables, Bloom Filters, and Skiplists _(Ch. 07)_
 - [[05-btree-lookup-algorithm-and-complexity]] — B-Tree Lookup Algorithm and Complexity _(Ch. 02)_
 - [[05-buffering-immutability-ordering]] — Buffering, Immutability, and Ordering _(Ch. 01)_
 - [[05-cache-oblivious-b-trees]] — Cache-Oblivious B-Trees and van Emde Boas Layout _(Ch. 06)_
+- [[05-consistent-hashing]] — Consistent Hashing for Partitioning _(Ch. 13)_
 - [[05-flp-impossibility-and-consensus]] — FLP Impossibility and Consensus Properties _(Ch. 08)_
 - [[05-gossip-dissemination]] — Gossip Dissemination _(Ch. 12)_
 - [[05-gossip-failure-detection]] — Gossip-Based Failure Detection _(Ch. 09)_
@@ -81,16 +86,15 @@ Alphabetical listing of all concepts across chapters.
 - [[06-fuse-reversing-failure-detection]] — FUSE Reversing Failure Detection _(Ch. 09)_
 - [[06-hybrid-gossip-and-partial-views]] — Hybrid Gossip and Partial Views _(Ch. 12)_
 - [[06-leader-election-and-consensus]] — Split Brain, Stable Leader Election, and Consensus _(Ch. 10)_
+- [[06-percolator-snapshot-isolation]] — Percolator: Snapshot Isolation via Client-Driven 2PC _(Ch. 13)_
 - [[06-right-only-appends-and-bulk-loading]] — Right-Only Appends and Bulk Loading _(Ch. 04)_
 - [[06-system-synchrony-models]] — System Synchrony Models _(Ch. 08)_
 - [[06-tunable-consistency-and-witness-replicas]] — Eventual and Tunable Consistency with Witness Replicas _(Ch. 11)_
 - [[06-unordered-log-structured-storage]] — Unordered Log-Structured Storage: Bitcask and WiscKey _(Ch. 07)_
 - [[07-checksums-and-crcs]] — Checksums and CRCs for Corruption Detection _(Ch. 03)_
+- [[07-coordination-avoidance-ramp]] — Coordination Avoidance and RAMP Transactions _(Ch. 13)_
 - [[07-crdts-and-strong-eventual-consistency]] — CRDTs and Strong Eventual Consistency _(Ch. 11)_
 - [[07-failure-models]] — Failure Models: Crash, Omission, and Byzantine _(Ch. 08)_
 - [[07-locks-latches-and-btree-concurrency]] — Locks, Latches, and B-Tree Concurrency _(Ch. 05)_
 - [[07-log-stacking-and-hardware-awareness]] — Log Stacking: FTL, Filesystem Logging, LLAMA, and Open-Channel SSDs _(Ch. 07)_
 - [[07-vacuum-and-page-defragmentation]] — Vacuum, Compression, and Page Defragmentation _(Ch. 04)_
-## _
-
-- [[_notebook_source]] — _Notebook_Source _(Ch. 13)_
