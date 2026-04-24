@@ -139,25 +139,16 @@ chapters:
     - consensus-algorithms
     - coordination-services
   11:
-    title: Batch Processing
-    pages: 475-510
-    sections:
-    - Simple Log Analysis
-    - Chain of Commands Versus Custom Program
-    - Sorting Versus In-Memory Aggregation
-    - Distributed Filesystems
-    - Object Stores
-    - Distributed Job Orchestration
-    - MapReduce
-    - Dataflow Engines
-    - Shuffling Data
-    - Joins and Grouping
-    - Query Languages
-    - DataFrames
-    - Extract–Transform–Load
-    - Analytics
-    - Machine Learning
-    - Serving Derived Data
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - unix-tools-as-batch-foundation
+    - distributed-storage-for-batch
+    - distributed-job-orchestration
+    - mapreduce
+    - dataflow-engines-spark-flink
+    - shuffle-and-distributed-joins
+    - serving-derived-data-from-batch
   12:
     status: done
     distilled_at: '2026-04-24'
