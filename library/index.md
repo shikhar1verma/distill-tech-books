@@ -7,7 +7,7 @@ type: library-index
 
 Distilled technical book knowledge bases.
 
-- [Database Internals](db-internals/index.md) — 14 chapters
+- [](db-internals/index.md) — 14 chapters
 - [Designing Data-Intensive Applications](ddia/index.md) — 14 chapters
 - [Fluent Python](fluent-python/index.md) — 23 chapters
 - [System Design Interview](system-design-interview-v1/index.md) — 16 chapters

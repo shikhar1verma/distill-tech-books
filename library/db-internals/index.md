@@ -1,9 +1,9 @@
 ---
-title: "Database Internals"
+title: ""
 type: book-index
 ---
 
-# Database Internals
+# 
 
 ## Chapters
 
@@ -18,5 +18,6 @@ type: book-index
 - 📓 **Ch 09**: [Failure Detection](chapters/09-failure-detection/index.md) — 6 concepts
 - 📓 **Ch 10**: [Leader Election](chapters/10-leader-election/index.md) — 6 concepts
 - 📓 **Ch 11**: [Replication And Consistency](chapters/11-replication-and-consistency/index.md) — 7 concepts
+- 📓 **Ch 12**: [Anti Entropy And Dissemination](chapters/12-anti-entropy-and-dissemination/index.md) — 6 concepts
 
 ## [Concept Index](concepts/index.md)

@@ -20,9 +20,11 @@ Alphabetical listing of all concepts across chapters.
 - [[01-lsm-tree-structure]] — LSM Tree Structure and Lifecycle _(Ch. 07)_
 - [[01-page-cache-and-buffer-management]] — Page Cache and Buffer Management _(Ch. 05)_
 - [[01-page-header-and-navigation-links]] — Page Header and Navigation Links _(Ch. 04)_
+- [[01-read-repair-and-digest-reads]] — Read Repair and Digest Reads _(Ch. 12)_
 - [[02-bully-algorithm]] — Bully Algorithm and Next-In-Line Failover _(Ch. 10)_
 - [[02-disk-hardware-and-block-io]] — Disk Hardware and the Block I/O Model _(Ch. 02)_
 - [[02-file-organization-principles]] — File Organization: Headers, Pages, and Fixed Schemas _(Ch. 03)_
+- [[02-hinted-handoff]] — Hinted Handoff _(Ch. 12)_
 - [[02-lazy-b-trees-and-buffering]] — Lazy B-Trees (WiredTiger and LA-Tree) _(Ch. 06)_
 - [[02-linearizability]] — Linearizability _(Ch. 11)_
 - [[02-memory-vs-disk-based-storage]] — Memory- Versus Disk-Based DBMS _(Ch. 01)_
@@ -36,12 +38,14 @@ Alphabetical listing of all concepts across chapters.
 - [[03-compaction-strategies]] — Compaction Strategies: Leveled, Size-Tiered, and Time-Window _(Ch. 07)_
 - [[03-fd-trees]] — FD-Trees and Fractional Cascading _(Ch. 06)_
 - [[03-link-abstractions-and-delivery-semantics]] — Link Abstractions and Delivery Semantics _(Ch. 08)_
+- [[03-merkle-trees]] — Merkle Trees for Replica Reconciliation _(Ch. 12)_
 - [[03-on-disk-structure-design-principles]] — On-Disk Structure Design Principles _(Ch. 02)_
 - [[03-row-vs-column-oriented-layouts]] — Row- Versus Column-Oriented Data Layouts _(Ch. 01)_
 - [[03-sequential-consistency]] — Sequential Consistency _(Ch. 11)_
 - [[03-slotted-pages]] — Slotted Pages for Variable-Size Records _(Ch. 03)_
 - [[03-swim-outsourced-heartbeats]] — SWIM Outsourced Heartbeats _(Ch. 09)_
 - [[03-write-ahead-log-and-recovery]] — Write-Ahead Log and Recovery _(Ch. 05)_
+- [[04-bitmap-version-vectors]] — Bitmap Version Vectors _(Ch. 12)_
 - [[04-breadcrumbs-and-parent-pointers]] — Breadcrumbs and Parent Pointers _(Ch. 04)_
 - [[04-btree-hierarchy-and-separator-keys]] — B-Tree Hierarchy, B+ Trees, and Separator Keys _(Ch. 02)_
 - [[04-bw-trees]] — Bw-Trees: Delta Chains and Compare-and-Swap _(Ch. 06)_
@@ -58,6 +62,7 @@ Alphabetical listing of all concepts across chapters.
 - [[05-buffering-immutability-ordering]] — Buffering, Immutability, and Ordering _(Ch. 01)_
 - [[05-cache-oblivious-b-trees]] — Cache-Oblivious B-Trees and van Emde Boas Layout _(Ch. 06)_
 - [[05-flp-impossibility-and-consensus]] — FLP Impossibility and Consensus Properties _(Ch. 08)_
+- [[05-gossip-dissemination]] — Gossip Dissemination _(Ch. 12)_
 - [[05-gossip-failure-detection]] — Gossip-Based Failure Detection _(Ch. 09)_
 - [[05-isolation-levels-and-anomalies]] — Isolation Levels and Read/Write Anomalies _(Ch. 05)_
 - [[05-managing-free-space]] — Free-Space Management and Fit Strategies _(Ch. 03)_
@@ -68,6 +73,7 @@ Alphabetical listing of all concepts across chapters.
 - [[06-concurrency-control-strategies]] — Concurrency Control: OCC, MVCC, and PCC _(Ch. 05)_
 - [[06-file-format-versioning]] — Versioning On-Disk File Formats _(Ch. 03)_
 - [[06-fuse-reversing-failure-detection]] — FUSE Reversing Failure Detection _(Ch. 09)_
+- [[06-hybrid-gossip-and-partial-views]] — Hybrid Gossip and Partial Views _(Ch. 12)_
 - [[06-leader-election-and-consensus]] — Split Brain, Stable Leader Election, and Consensus _(Ch. 10)_
 - [[06-right-only-appends-and-bulk-loading]] — Right-Only Appends and Bulk Loading _(Ch. 04)_
 - [[06-system-synchrony-models]] — System Synchrony Models _(Ch. 08)_
