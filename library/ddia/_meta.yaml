@@ -3,97 +3,70 @@ title: Designing Data-Intensive Applications
 total_chapters: 14
 chapters:
   1:
-    title: Trade-Offs in Data Systems Architecture
-    pages: 25-56
-    sections:
-    - Characterizing Transaction Processing and Analytics
-    - Data Warehousing
-    - Systems of Record and Derived Data
-    - Pros and Cons of Cloud Services
-    - Cloud Native System Architecture
-    - Operations in the Cloud Era
-    - Problems with Distributed Systems
-    - Microservices and Serverless
-    - Cloud Computing Versus Supercomputing
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - operational-vs-analytical-systems
+    - data-warehousing-and-data-lakes
+    - systems-of-record-and-derived-data
+    - cloud-vs-self-hosting
+    - separation-of-storage-and-compute
+    - distributed-vs-single-node-systems
+    - microservices-and-serverless
   2:
-    title: Defining Nonfunctional Requirements
-    pages: 57-88
-    sections:
-    - Representing Users, Posts, and Follows
-    - Materializing and Updating Timelines
-    - Latency and Response Time
-    - Average, Median, and Percentiles
-    - Use of Response Time Metrics
-    - Fault Tolerance
-    - Hardware and Software Faults
-    - Humans and Reliability
-    - Understanding Load
-    - Shared-Memory, Shared-Disk, and Shared-Nothing Architectures
-    - Principles for Scalability
-    - 'Operability: Making Life Easy for Operations'
-    - 'Simplicity: Managing Complexity'
-    - 'Evolvability: Making Change Easy'
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - social-network-timeline-case-study
+    - response-time-percentiles-and-tail-latency
+    - metastable-failure-and-overload-control
+    - reliability-and-fault-tolerance
+    - scaling-architectures-shared-nothing
+    - maintainability-operability-simplicity-evolvability
   3:
-    title: Data Models and Query Languages
-    pages: 89-138
-    sections:
-    - The Object-Relational Mismatch
-    - Normalization, Denormalization, and Joins
-    - Many-to-One and Many-to-Many Relationships
-    - 'Stars and Snowflakes: Schemas for Analytics'
-    - When to Use Which Model
-    - Property Graphs
-    - The Cypher Query Language
-    - Graph Queries in SQL
-    - Triple Stores and SPARQL
-    - 'Datalog: Recursive Relational Queries'
-    - GraphQL
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - relational-vs-document-models
+    - normalization-and-denormalization
+    - star-and-snowflake-schemas
+    - property-graphs-and-cypher
+    - triple-stores-and-datalog
+    - graphql
+    - event-sourcing-and-cqrs
   4:
-    title: Storage and Retrieval
-    pages: 139-184
-    sections:
-    - Log-Structured Storage
-    - B-Trees
-    - Comparing B-Trees and LSM-Trees
-    - Multicolumn and Secondary Indexes
-    - Storing Values Within the Index
-    - Keeping Everything in Memory
-    - Cloud Data Warehouses
-    - Column-Oriented Storage
-    - 'Query Execution: Compilation and Vectorization'
-    - Materialized Views and Data Cubes
-    - Full-Text Search
-    - Vector Embeddings
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - log-structured-storage-lsm-trees
+    - b-trees-and-page-oriented-storage
+    - comparing-btrees-and-lsm-trees
+    - secondary-and-clustered-indexes
+    - column-oriented-storage
+    - query-execution-and-materialized-views
+    - multidimensional-and-vector-indexes
   5:
-    title: Encoding and Evolution
-    pages: 185-220
-    sections:
-    - Language-Specific Formats
-    - JSON, XML, and Binary Variants
-    - Protocol Buffers
-    - Avro
-    - The Merits of Schemas
-    - Dataflow Through Databases
-    - 'Dataflow Through Services: REST and RPC'
-    - Durable Execution and Workflows
-    - Event-Driven Architectures
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - backward-forward-compatibility-and-rolling-upgrades
+    - textual-encodings-and-json-schema
+    - protocol-buffers-field-tags-and-schema-evolution
+    - avro-writer-and-reader-schemas
+    - dataflow-through-databases
+    - rest-rpc-and-service-discovery
+    - async-dataflow-brokers-actors-durable-execution
   6:
-    title: Replication
-    pages: 221-274
-    sections:
-    - Synchronous Versus Asynchronous Replication
-    - Setting Up New Followers
-    - Handling Node Outages
-    - Implementation of Replication Logs
-    - Problems with Replication Lag
-    - Solutions for Replication Lag
-    - Geographically Distributed Operation
-    - Sync Engines and Local-First Software
-    - Dealing with Conflicting Writes
-    - Writing to the Database When a Node Is Down
-    - Single-Leader Versus Leaderless Replication Performance
-    - Multi-Region Operation
-    - Detecting Concurrent Writes
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - single-leader-replication-and-logs
+    - replication-lag-and-consistency-guarantees
+    - multi-leader-replication-and-topologies
+    - sync-engines-and-local-first-software
+    - conflict-resolution-lww-crdts-ot
+    - leaderless-replication-and-quorums
+    - detecting-concurrent-writes-version-vectors
   7:
     status: done
     distilled_at: '2026-04-23'
@@ -161,18 +134,16 @@ chapters:
     - stream-joins
     - stream-fault-tolerance
   13:
-    title: A Philosophy of Streaming Systems
-    pages: 563-608
-    sections:
-    - Combining Specialized Tools by Deriving Data
-    - Batch and Stream Processing
-    - Composing Data Storage Technologies
-    - Designing Applications Around Dataflow
-    - Observing Derived State
-    - The End-to-End Argument for Databases
-    - Enforcing Constraints
-    - Timeliness and Integrity
-    - Trust, but Verify
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - data-integration-via-derived-data
+    - unbundling-the-database
+    - applications-around-dataflow
+    - write-path-and-read-path
+    - end-to-end-argument-and-idempotence
+    - coordination-avoiding-constraints
+    - trust-but-verify-auditability
   14:
     status: done
     distilled_at: '2026-04-24'
