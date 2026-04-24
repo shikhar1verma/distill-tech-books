@@ -117,36 +117,27 @@ chapters:
     - serializability-techniques
     - two-phase-commit-distributed
   9:
-    title: The Trouble with Distributed Systems
-    pages: 369-424
-    sections:
-    - The Limitations of TCP
-    - Network Faults in Practice
-    - Fault Detection
-    - Timeouts and Unbounded Delays
-    - Synchronous Versus Asynchronous Networks
-    - Monotonic Versus Time-of-Day Clocks
-    - Clock Synchronization and Accuracy
-    - Relying on Synchronized Clocks
-    - Process Pauses
-    - The Majority Rules
-    - Distributed Locks and Leases
-    - Byzantine Faults
-    - System Model and Reality
-    - Formal Methods and Randomized Testing
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - unreliable-networks-and-fault-detection
+    - unreliable-clocks
+    - process-pauses
+    - quorums-leases-and-fencing-tokens
+    - byzantine-faults
+    - system-models-safety-and-liveness
+    - formal-methods-and-deterministic-testing
   10:
-    title: Consistency and Consensus
-    pages: 425-474
-    sections:
-    - What Makes a System Linearizable?
-    - Relying on Linearizability
-    - Implementing Linearizable Systems
-    - The Cost of Linearizability
-    - Logical Clocks
-    - Linearizable ID Generators
-    - The Many Faces of Consensus
-    - Consensus in Practice
-    - Coordination Services
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - linearizability
+    - cap-theorem-and-cost-of-linearizability
+    - logical-clocks
+    - linearizable-id-generators
+    - consensus-and-its-equivalent-forms
+    - consensus-algorithms
+    - coordination-services
   11:
     title: Batch Processing
     pages: 475-510

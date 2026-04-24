@@ -15,5 +15,7 @@ type: book-index
 - 📓 **Ch 06**: [Replication](chapters/06-replication/index.md) — 7 concepts
 - 📓 **Ch 07**: [Sharding](chapters/07-sharding/index.md) — 7 concepts
 - 📓 **Ch 08**: [Transactions](chapters/08-transactions/index.md) — 7 concepts
+- 📓 **Ch 09**: [Trouble With Distributed Systems](chapters/09-trouble-with-distributed-systems/index.md) — 7 concepts
+- 📓 **Ch 10**: [Consistency And Consensus](chapters/10-consistency-and-consensus/index.md) — 7 concepts
 
 ## [Concept Index](concepts/index.md)
