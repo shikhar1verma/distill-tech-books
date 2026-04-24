@@ -86,16 +86,15 @@ chapters:
     - system-synchrony-models
     - failure-models
   9:
-    title: Failure Detection
-    pages: 215-224
-    sections:
-    - Heartbeats and Pings
-    - Timeout-Free Failure Detector
-    - Outsourced Heartbeats
-    - Phi-Accural Failure Detector
-    - Gossip and Failure Detection
-    - Reversing Failure Detection Problem Statement
-    - Summary
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - failure-detector-fundamentals
+    - timeout-free-failure-detector
+    - swim-outsourced-heartbeats
+    - phi-accrual-failure-detector
+    - gossip-failure-detection
+    - fuse-reversing-failure-detection
   10:
     title: Leader Election
     pages: 225-234

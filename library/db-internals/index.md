@@ -15,5 +15,6 @@ type: book-index
 - 📓 **Ch 06**: [B Tree Variants](chapters/06-b-tree-variants/index.md) — 5 concepts
 - 📓 **Ch 07**: [Log Structured Storage](chapters/07-log-structured-storage/index.md) — 7 concepts
 - 📓 **Ch 08**: [Distributed Systems Intro](chapters/08-distributed-systems-intro/index.md) — 7 concepts
+- 📓 **Ch 09**: [Failure Detection](chapters/09-failure-detection/index.md) — 6 concepts
 
 ## [Concept Index](concepts/index.md)
