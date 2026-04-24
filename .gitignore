@@ -24,6 +24,9 @@ Thumbs.db
 .obsidian/
 library/**/.obsidian/
 
+# Book figure images extracted from PDFs — kept locally, not pushed
+library/**/images/
+
 # IDE
 .vscode/
 .idea/
