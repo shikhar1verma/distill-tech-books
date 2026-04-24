@@ -17,5 +17,9 @@ type: book-index
 - 📓 **Ch 08**: [Transactions](chapters/08-transactions/index.md) — 7 concepts
 - 📓 **Ch 09**: [Trouble With Distributed Systems](chapters/09-trouble-with-distributed-systems/index.md) — 7 concepts
 - 📓 **Ch 10**: [Consistency And Consensus](chapters/10-consistency-and-consensus/index.md) — 7 concepts
+- 📓 **Ch 11**: [Batch Processing](chapters/11-batch-processing/index.md) — 7 concepts
+- 📓 **Ch 12**: [Stream Processing](chapters/12-stream-processing/index.md) — 7 concepts
+- 📓 **Ch 13**: [Philosophy Of Streaming Systems](chapters/13-philosophy-of-streaming-systems/index.md) — 7 concepts
+- 📓 **Ch 14**: [Doing The Right Thing](chapters/14-doing-the-right-thing/index.md) — 6 concepts
 
 ## [Concept Index](concepts/index.md)

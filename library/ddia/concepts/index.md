@@ -10,26 +10,37 @@ Alphabetical listing of all concepts across chapters.
 ## 0
 
 - [[01-acid-properties]] — ACID Properties and the Meaning of a Transaction _(Ch. 08)_
+- [[01-algorithmic-decision-making-and-bias]] — Algorithmic Decision-Making and Bias _(Ch. 14)_
 - [[01-backward-forward-compatibility-and-rolling-upgrades]] — Backward & Forward Compatibility for Rolling Upgrades _(Ch. 05)_
+- [[01-data-integration-via-derived-data]] — Data Integration via Derived Data _(Ch. 13)_
 - [[01-linearizability]] — Linearizability _(Ch. 10)_
 - [[01-log-structured-storage-lsm-trees]] — Log-Structured Storage and LSM-Trees _(Ch. 04)_
+- [[01-message-brokers-amqp-vs-log]] — Message Brokers: AMQP/JMS vs Log-Based _(Ch. 12)_
 - [[01-operational-vs-analytical-systems]] — Operational vs Analytical Systems (OLTP vs OLAP) _(Ch. 01)_
 - [[01-relational-vs-document-models]] — Relational vs Document Models _(Ch. 03)_
 - [[01-sharding-fundamentals-and-multitenancy]] — Sharding Fundamentals and Multitenancy _(Ch. 07)_
 - [[01-single-leader-replication-and-logs]] — Single-Leader Replication and Replication Logs _(Ch. 06)_
 - [[01-social-network-timeline-case-study]] — Social Network Home Timelines: Fan-Out Trade-Off _(Ch. 02)_
+- [[01-unix-tools-as-batch-foundation]] — Unix Tools as the Foundation of Batch Processing _(Ch. 11)_
 - [[01-unreliable-networks-and-fault-detection]] — Unreliable Networks and Fault Detection _(Ch. 09)_
 - [[02-b-trees-and-page-oriented-storage]] — B-Trees and Page-Oriented Storage _(Ch. 04)_
 - [[02-cap-theorem-and-cost-of-linearizability]] — CAP Theorem and the Cost of Linearizability _(Ch. 10)_
+- [[02-change-data-capture]] — Change Data Capture _(Ch. 12)_
 - [[02-data-warehousing-and-data-lakes]] — Data Warehousing, Data Lakes, and the Lakehouse _(Ch. 01)_
+- [[02-distributed-storage-for-batch]] — Distributed Storage for Batch: DFS vs Object Stores _(Ch. 11)_
+- [[02-feedback-loops-and-systems-thinking]] — Feedback Loops and Systems Thinking _(Ch. 14)_
 - [[02-key-range-sharding]] — Sharding by Key Range _(Ch. 07)_
 - [[02-normalization-and-denormalization]] — Normalization, Denormalization, and Joins _(Ch. 03)_
 - [[02-read-committed-isolation]] — Read Committed Isolation _(Ch. 08)_
 - [[02-replication-lag-and-consistency-guarantees]] — Replication Lag and Per-User Consistency Guarantees _(Ch. 06)_
 - [[02-response-time-percentiles-and-tail-latency]] — Response Time, Percentiles, and Tail Latency _(Ch. 02)_
 - [[02-textual-encodings-and-json-schema]] — Textual Encodings: JSON, XML, CSV, and JSON Schema _(Ch. 05)_
+- [[02-unbundling-the-database]] — Unbundling the Database _(Ch. 13)_
 - [[02-unreliable-clocks]] — Unreliable Clocks and TrueTime _(Ch. 09)_
+- [[03-applications-around-dataflow]] — Designing Applications Around Dataflow _(Ch. 13)_
 - [[03-comparing-btrees-and-lsm-trees]] — Comparing B-Trees and LSM-Trees _(Ch. 04)_
+- [[03-distributed-job-orchestration]] — Distributed Job Orchestration and Workflow Scheduling _(Ch. 11)_
+- [[03-event-sourcing-immutable-logs]] — Event Sourcing & Immutable Event Logs _(Ch. 12)_
 - [[03-hash-based-sharding]] — Sharding by Hash of Key _(Ch. 07)_
 - [[03-logical-clocks]] — Logical Clocks and Distributed ID Generation _(Ch. 10)_
 - [[03-metastable-failure-and-overload-control]] — Metastable Failure and Overload Control _(Ch. 02)_
@@ -38,28 +49,39 @@ Alphabetical listing of all concepts across chapters.
 - [[03-protocol-buffers-field-tags-and-schema-evolution]] — Protocol Buffers: Field Tags and Schema Evolution _(Ch. 05)_
 - [[03-snapshot-isolation-mvcc]] — Snapshot Isolation and Multiversion Concurrency Control _(Ch. 08)_
 - [[03-star-and-snowflake-schemas]] — Star and Snowflake Schemas _(Ch. 03)_
+- [[03-surveillance-as-a-lens]] — Surveillance as a Lens for Data Collection _(Ch. 14)_
 - [[03-systems-of-record-and-derived-data]] — Systems of Record and Derived Data _(Ch. 01)_
 - [[04-avro-writer-and-reader-schemas]] — Avro: Writer's and Reader's Schemas _(Ch. 05)_
 - [[04-cloud-vs-self-hosting]] — Cloud Services vs Self-Hosting _(Ch. 01)_
 - [[04-linearizable-id-generators]] — Linearizable ID Generators _(Ch. 10)_
+- [[04-mapreduce]] — MapReduce _(Ch. 11)_
+- [[04-meaningful-consent-and-privacy]] — Meaningful Consent and Privacy as a Decision Right _(Ch. 14)_
 - [[04-preventing-lost-updates]] — Preventing Lost Updates _(Ch. 08)_
 - [[04-property-graphs-and-cypher]] — Property Graphs and Cypher _(Ch. 03)_
 - [[04-quorums-leases-and-fencing-tokens]] — Majority Quorums, Leases, and Fencing Tokens _(Ch. 09)_
 - [[04-reliability-and-fault-tolerance]] — Reliability: Faults, Failures, and Fault Tolerance _(Ch. 02)_
 - [[04-secondary-and-clustered-indexes]] — Secondary, Clustered, and Covering Indexes _(Ch. 04)_
 - [[04-skewed-workloads-and-hot-spots]] — Skewed Workloads and Hot Spots _(Ch. 07)_
+- [[04-stream-processing-use-cases]] — Stream Processing Use Cases _(Ch. 12)_
 - [[04-sync-engines-and-local-first-software]] — Sync Engines and Local-First Software _(Ch. 06)_
+- [[04-write-path-and-read-path]] — Write Path, Read Path, and Observing Derived State _(Ch. 13)_
 - [[05-byzantine-faults]] — Byzantine Faults and Weak Forms of Lying _(Ch. 09)_
 - [[05-column-oriented-storage]] — Column-Oriented Storage for Analytics _(Ch. 04)_
 - [[05-conflict-resolution-lww-crdts-ot]] — Conflict Resolution: LWW, CRDTs, and Operational Transformation _(Ch. 06)_
 - [[05-consensus-and-its-equivalent-forms]] — Consensus and Its Equivalent Forms _(Ch. 10)_
+- [[05-data-as-toxic-asset]] — Data as Toxic Asset and Power _(Ch. 14)_
+- [[05-dataflow-engines-spark-flink]] — Dataflow Engines: Spark, Flink, and High-Level APIs _(Ch. 11)_
 - [[05-dataflow-through-databases]] — Dataflow Through Databases: Data Outlives Code _(Ch. 05)_
+- [[05-end-to-end-argument-and-idempotence]] — The End-to-End Argument and Idempotent Operations _(Ch. 13)_
+- [[05-reasoning-about-time-and-windows]] — Reasoning About Time & Windows _(Ch. 12)_
 - [[05-rebalancing-strategies]] — Automatic vs. Manual Rebalancing _(Ch. 07)_
 - [[05-scaling-architectures-shared-nothing]] — Shared-Memory, Shared-Disk, and Shared-Nothing Architectures _(Ch. 02)_
 - [[05-separation-of-storage-and-compute]] — Separation of Storage and Compute _(Ch. 01)_
 - [[05-triple-stores-and-datalog]] — Triple Stores, SPARQL, and Datalog _(Ch. 03)_
 - [[05-write-skew-and-phantoms]] — Write Skew and Phantoms _(Ch. 08)_
 - [[06-consensus-algorithms]] — Consensus Algorithms (Raft, Paxos, Zab, VR) _(Ch. 10)_
+- [[06-coordination-avoiding-constraints]] — Enforcing Constraints Without Coordination _(Ch. 13)_
+- [[06-data-minimization-and-self-regulation]] — Data Minimization and Engineering Self-Regulation _(Ch. 14)_
 - [[06-distributed-vs-single-node-systems]] — Distributed vs Single-Node Systems _(Ch. 01)_
 - [[06-graphql]] — GraphQL _(Ch. 03)_
 - [[06-leaderless-replication-and-quorums]] — Leaderless (Dynamo-Style) Replication and Quorums _(Ch. 06)_
@@ -68,6 +90,8 @@ Alphabetical listing of all concepts across chapters.
 - [[06-request-routing]] — Request Routing and Coordination Services _(Ch. 07)_
 - [[06-rest-rpc-and-service-discovery]] — REST, RPC, and Service Discovery _(Ch. 05)_
 - [[06-serializability-techniques]] — Serializable Isolation: Serial Execution, 2PL, and SSI _(Ch. 08)_
+- [[06-shuffle-and-distributed-joins]] — Shuffle and Distributed Joins _(Ch. 11)_
+- [[06-stream-joins]] — Stream Joins _(Ch. 12)_
 - [[06-system-models-safety-and-liveness]] — System Models, Safety, and Liveness _(Ch. 09)_
 - [[07-async-dataflow-brokers-actors-durable-execution]] — Asynchronous Dataflow: Message Brokers, Actors, and Durable Execution _(Ch. 05)_
 - [[07-coordination-services]] — Coordination Services (ZooKeeper, etcd, Consul) _(Ch. 10)_
@@ -76,5 +100,8 @@ Alphabetical listing of all concepts across chapters.
 - [[07-formal-methods-and-deterministic-testing]] — Formal Methods, Fault Injection, and Deterministic Simulation Testing _(Ch. 09)_
 - [[07-microservices-and-serverless]] — Microservices and Serverless _(Ch. 01)_
 - [[07-multidimensional-and-vector-indexes]] — Multidimensional, Full-Text, and Vector Indexes _(Ch. 04)_
+- [[07-serving-derived-data-from-batch]] — Batch Use Cases and Serving Derived Data _(Ch. 11)_
 - [[07-sharding-and-secondary-indexes]] — Sharding and Secondary Indexes _(Ch. 07)_
+- [[07-stream-fault-tolerance]] — Stream Fault Tolerance & Exactly-Once Semantics _(Ch. 12)_
+- [[07-trust-but-verify-auditability]] — Trust, but Verify — Auditable Dataflow Systems _(Ch. 13)_
 - [[07-two-phase-commit-distributed]] — Two-Phase Commit and Distributed Transactions _(Ch. 08)_

@@ -159,18 +159,16 @@ chapters:
     - Machine Learning
     - Serving Derived Data
   12:
-    title: Stream Processing
-    pages: 511-562
-    sections:
-    - Messaging Systems
-    - Log-Based Message Brokers
-    - Keeping Systems in Sync
-    - Change Data Capture
-    - State, Streams, and Immutability
-    - Uses of Stream Processing
-    - Reasoning About Time
-    - Stream Joins
-    - Fault Tolerance
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - message-brokers-amqp-vs-log
+    - change-data-capture
+    - event-sourcing-immutable-logs
+    - stream-processing-use-cases
+    - reasoning-about-time-and-windows
+    - stream-joins
+    - stream-fault-tolerance
   13:
     title: A Philosophy of Streaming Systems
     pages: 563-608
