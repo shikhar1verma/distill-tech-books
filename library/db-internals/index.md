@@ -13,5 +13,7 @@ type: book-index
 - 📓 **Ch 04**: [Implementing B Trees](chapters/04-implementing-b-trees/index.md) — 7 concepts
 - 📓 **Ch 05**: [Transaction Processing And Recovery](chapters/05-transaction-processing-and-recovery/index.md) — 7 concepts
 - 📓 **Ch 06**: [B Tree Variants](chapters/06-b-tree-variants/index.md) — 5 concepts
+- 📓 **Ch 07**: [Log Structured Storage](chapters/07-log-structured-storage/index.md) — 7 concepts
+- 📓 **Ch 08**: [Distributed Systems Intro](chapters/08-distributed-systems-intro/index.md) — 7 concepts
 
 ## [Concept Index](concepts/index.md)

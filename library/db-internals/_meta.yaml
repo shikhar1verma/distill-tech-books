@@ -64,59 +64,27 @@ chapters:
     - bw-trees
     - cache-oblivious-b-trees
   7:
-    title: Log-Structured Storage
-    pages: 149-190
-    sections:
-    - LSM Trees
-    - LSM Tree Structure
-    - Updates and Deletes
-    - LSM Tree Lookups
-    - Merge-Iteration
-    - Reconciliation
-    - Maintenance in LSM Trees
-    - Read, Write, and Space Amplification
-    - RUM Conjecture
-    - Implementation Details
-    - Sorted String Tables
-    - Bloom Filters
-    - Skiplist
-    - Disk Access
-    - Compression
-    - Unordered LSM Storage
-    - Bitcask
-    - WiscKey
-    - Concurrency in LSM Trees
-    - Log Stacking
-    - Flash Translation Layer
-    - Filesystem Logging
-    - LLAMA and Mindful Stacking
-    - Open-Channel SSDs
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - lsm-tree-structure
+    - tombstones-and-merge-reconciliation
+    - compaction-strategies
+    - rum-conjecture-and-amplification
+    - bloom-filters-and-skiplists
+    - unordered-log-structured-storage
+    - log-stacking-and-hardware-awareness
   8:
-    title: Introduction and Overview
-    pages: 191-214
-    sections:
-    - Concurrent Execution
-    - Shared State in a Distributed System
-    - Fallacies of Distributed Computing
-    - Processing
-    - Clocks and Time
-    - State Consistency
-    - Local and Remote Execution
-    - Need to Handle Failures
-    - Network Partitions and Partial Failures
-    - Cascading Failures
-    - Distributed Systems Abstractions
-    - Links
-    - Two Generals’ Problem
-    - FLP Impossibility
-    - System Synchrony
-    - Failure Models
-    - Crash Faults
-    - Omission Faults
-    - Arbitrary Faults
-    - Handling Failures
-    - Summary
+    status: done
+    distilled_at: '2026-04-23'
+    concepts:
+    - fallacies-of-distributed-computing
+    - partial-failures-and-cascading-failures
+    - link-abstractions-and-delivery-semantics
+    - two-generals-problem
+    - flp-impossibility-and-consensus
+    - system-synchrony-models
+    - failure-models
   9:
     title: Failure Detection
     pages: 215-224
