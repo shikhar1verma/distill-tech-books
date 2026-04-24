@@ -1,9 +1,9 @@
 ---
-title: ""
+title: "Database Internals"
 type: book-index
 ---
 
-# 
+# Database Internals
 
 ## Chapters
 
