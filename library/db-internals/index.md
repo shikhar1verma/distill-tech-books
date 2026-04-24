@@ -16,5 +16,7 @@ type: book-index
 - 📓 **Ch 07**: [Log Structured Storage](chapters/07-log-structured-storage/index.md) — 7 concepts
 - 📓 **Ch 08**: [Distributed Systems Intro](chapters/08-distributed-systems-intro/index.md) — 7 concepts
 - 📓 **Ch 09**: [Failure Detection](chapters/09-failure-detection/index.md) — 6 concepts
+- 📓 **Ch 10**: [Leader Election](chapters/10-leader-election/index.md) — 6 concepts
+- 📓 **Ch 11**: [Replication And Consistency](chapters/11-replication-and-consistency/index.md) — 7 concepts
 
 ## [Concept Index](concepts/index.md)
