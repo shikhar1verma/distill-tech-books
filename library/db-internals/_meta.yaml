@@ -96,36 +96,26 @@ chapters:
     - gossip-failure-detection
     - fuse-reversing-failure-detection
   10:
-    title: Leader Election
-    pages: 225-234
-    sections:
-    - Bully Algorithm
-    - Next-In-Line Failover
-    - Candidate/Ordinary Optimization
-    - Invitation Algorithm
-    - Ring Algorithm
-    - Summary
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - leader-election-fundamentals
+    - bully-algorithm
+    - candidate-ordinary-optimization
+    - invitation-algorithm
+    - ring-algorithm
+    - leader-election-and-consensus
   11:
-    title: Replication and Consistency
-    pages: 235-262
-    sections:
-    - Achieving Availability
-    - Infamous CAP
-    - Use CAP Carefully
-    - Harvest and Yield
-    - Shared Memory
-    - Ordering
-    - Consistency Models
-    - Strict Consistency
-    - Linearizability
-    - Sequential Consistency
-    - Causal Consistency
-    - Session Models
-    - Eventual Consistency
-    - Tunable Consistency
-    - Witness Replicas
-    - Strong Eventual Consistency and CRDTs
-    - Summary
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - cap-pacelec-and-harvest-yield
+    - linearizability
+    - sequential-consistency
+    - causal-consistency-and-vector-clocks
+    - session-models
+    - tunable-consistency-and-witness-replicas
+    - crdts-and-strong-eventual-consistency
   12:
     title: Anti-Entropy and Dissemination
     pages: 263-276
