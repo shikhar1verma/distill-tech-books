@@ -9,6 +9,7 @@ Alphabetical listing of all concepts across chapters.
 
 ## 0
 
+- [[01-atomic-broadcast-and-virtual-synchrony]] — Atomic Broadcast and Virtual Synchrony _(Ch. 14)_
 - [[01-binary-encoding-primitives]] — Binary Encoding of Primitives and Variable-Size Data _(Ch. 03)_
 - [[01-bst-limitations-for-disk]] — Why Binary Search Trees Fail on Disk _(Ch. 02)_
 - [[01-cap-pacelec-and-harvest-yield]] — CAP, PACELEC, and Harvest/Yield _(Ch. 11)_
@@ -33,8 +34,10 @@ Alphabetical listing of all concepts across chapters.
 - [[02-partial-failures-and-cascading-failures]] — Partial Failures and Cascading Failures _(Ch. 08)_
 - [[02-timeout-free-failure-detector]] — Timeout-Free Failure Detector _(Ch. 09)_
 - [[02-tombstones-and-merge-reconciliation]] — Tombstones, Merge-Iteration, and Reconciliation _(Ch. 07)_
+- [[02-zookeeper-atomic-broadcast-zab]] — Zookeeper Atomic Broadcast (ZAB) _(Ch. 14)_
 - [[03-binary-search-with-indirection-pointers]] — Binary Search with Indirection Pointers _(Ch. 04)_
 - [[03-candidate-ordinary-optimization]] — Candidate/Ordinary Optimization _(Ch. 10)_
+- [[03-classic-paxos]] — Classic Paxos Algorithm _(Ch. 14)_
 - [[03-compaction-strategies]] — Compaction Strategies: Leveled, Size-Tiered, and Time-Window _(Ch. 07)_
 - [[03-fd-trees]] — FD-Trees and Fractional Cascading _(Ch. 06)_
 - [[03-link-abstractions-and-delivery-semantics]] — Link Abstractions and Delivery Semantics _(Ch. 08)_
@@ -53,6 +56,7 @@ Alphabetical listing of all concepts across chapters.
 - [[04-cell-layout]] — Cell Layout: Key Cells and Key-Value Cells _(Ch. 03)_
 - [[04-data-files-and-index-files]] — Data Files, Index Files, and Indirection _(Ch. 01)_
 - [[04-invitation-algorithm]] — Invitation Algorithm _(Ch. 10)_
+- [[04-multi-paxos-and-variants]] — Multi-Paxos and Paxos Variants _(Ch. 14)_
 - [[04-phi-accrual-failure-detector]] — Phi-Accrual Failure Detector _(Ch. 09)_
 - [[04-rum-conjecture-and-amplification]] — RUM Conjecture and the Three Amplifications _(Ch. 07)_
 - [[04-steal-force-policies-and-aries]] — Steal/Force Policies and ARIES _(Ch. 05)_
@@ -66,10 +70,12 @@ Alphabetical listing of all concepts across chapters.
 - [[05-gossip-failure-detection]] — Gossip-Based Failure Detection _(Ch. 09)_
 - [[05-isolation-levels-and-anomalies]] — Isolation Levels and Read/Write Anomalies _(Ch. 05)_
 - [[05-managing-free-space]] — Free-Space Management and Fit Strategies _(Ch. 03)_
+- [[05-raft-consensus]] — Raft Consensus Algorithm _(Ch. 14)_
 - [[05-rebalancing-and-b-star-trees]] — Rebalancing and B*-Trees _(Ch. 04)_
 - [[05-ring-algorithm]] — Ring Algorithm _(Ch. 10)_
 - [[05-session-models]] — Session Models (Client-Centric Consistency) _(Ch. 11)_
 - [[06-btree-node-splits-and-merges]] — B-Tree Node Splits and Merges _(Ch. 02)_
+- [[06-byzantine-consensus-pbft]] — Byzantine Consensus and PBFT _(Ch. 14)_
 - [[06-concurrency-control-strategies]] — Concurrency Control: OCC, MVCC, and PCC _(Ch. 05)_
 - [[06-file-format-versioning]] — Versioning On-Disk File Formats _(Ch. 03)_
 - [[06-fuse-reversing-failure-detection]] — FUSE Reversing Failure Detection _(Ch. 09)_
@@ -85,3 +91,6 @@ Alphabetical listing of all concepts across chapters.
 - [[07-locks-latches-and-btree-concurrency]] — Locks, Latches, and B-Tree Concurrency _(Ch. 05)_
 - [[07-log-stacking-and-hardware-awareness]] — Log Stacking: FTL, Filesystem Logging, LLAMA, and Open-Channel SSDs _(Ch. 07)_
 - [[07-vacuum-and-page-defragmentation]] — Vacuum, Compression, and Page Defragmentation _(Ch. 04)_
+## _
+
+- [[_notebook_source]] — _Notebook_Source _(Ch. 13)_

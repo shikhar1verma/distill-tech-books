@@ -249,26 +249,12 @@ chapters:
     - Coordination Avoidance
     - Summary
   14:
-    title: Consensus
-    pages: 299-332
-    sections:
-    - Broadcast
-    - Atomic Broadcast
-    - Virtual Synchrony
-    - Zookeeper Atomic Broadcast (ZAB)
-    - Paxos
-    - Paxos Algorithm
-    - Quorums in Paxos
-    - Failure Scenarios
-    - Multi-Paxos
-    - Fast Paxos
-    - Egalitarian Paxos
-    - Flexible Paxos
-    - Generalized Solution to Consensus
-    - Raft
-    - Leader Role in Raft
-    - Failure Scenarios
-    - Byzantine Consensus
-    - PBFT Algorithm
-    - Recovery and Checkpointing
-    - Summary
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - atomic-broadcast-and-virtual-synchrony
+    - zookeeper-atomic-broadcast-zab
+    - classic-paxos
+    - multi-paxos-and-variants
+    - raft-consensus
+    - byzantine-consensus-pbft
