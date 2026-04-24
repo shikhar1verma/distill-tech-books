@@ -183,6 +183,12 @@ chapters:
     - Timeliness and Integrity
     - Trust, but Verify
   14:
-    title: Doing the Right Thing
-    pages: 609-609
-    sections: []
+    status: done
+    distilled_at: '2026-04-24'
+    concepts:
+    - algorithmic-decision-making-and-bias
+    - feedback-loops-and-systems-thinking
+    - surveillance-as-a-lens
+    - meaningful-consent-and-privacy
+    - data-as-toxic-asset
+    - data-minimization-and-self-regulation
